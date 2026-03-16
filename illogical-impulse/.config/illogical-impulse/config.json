@@ -141,8 +141,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 26.86657475490199,
-                "y": 18.831954656862706
+                "x": 195.7578125,
+                "y": 198
             },
             "weather": {
                 "enable": false,
@@ -351,7 +351,7 @@
     "panelFamily": "ii",
     "policies": {
         "ai": 1,
-        "weeb": 2
+        "weeb": 0
     },
     "regionSelector": {
         "annotation": {
