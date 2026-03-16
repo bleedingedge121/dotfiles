@@ -34,5 +34,5 @@ input_path = '~/.config/matugen/templates/wallpaper.txt'
 output_path = '~/.local/state/quickshell/user/generated/wallpaper/path.txt'
 
 [templates.Obsidian]
-input_path = '/home/nox/.config/matugen/templates/Obsidian/obsidian-minimal-matugen-colors.css'
-output_path = '/home/nox/Obsidian/obsidianvault/.obsidian/snippets/obsidian-minimal-matugen-colors.css'
+input_path = '/home/nexus/.config/matugen/templates/Obsidian/obsidian-minimal-matugen-colors.css'
+output_path = '/home/nexus/Obsidian/obsidianvault/.obsidian/snippets/obsidian-minimal-matugen-colors.css'

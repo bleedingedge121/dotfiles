@@ -56,10 +56,10 @@
             "type": "scheme-content"
         },
         "transparency": {
-            "automatic": false,
+            "automatic": true,
             "backgroundTransparency": 1,
             "contentTransparency": 0.8,
-            "enable": false
+            "enable": true
         },
         "wallpaperTheming": {
             "enableAppsAndShell": true,
@@ -102,20 +102,20 @@
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/Cachy_Topography5.jpg",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/0384.jpg",
         "widgets": {
             "clock": {
                 "cookie": {
                     "aiStyling": true,
                     "constantlyRotate": false,
                     "dateInClock": true,
-                    "dateStyle": "bubble",
+                    "dateStyle": "hide",
                     "dialNumberStyle": "none",
                     "hourHandStyle": "fill",
                     "hourMarks": false,
-                    "minuteHandStyle": "medium",
+                    "minuteHandStyle": "bold",
                     "secondHandStyle": "dot",
-                    "sides": 9,
+                    "sides": 6,
                     "timeIndicators": true,
                     "useSineCookie": true
                 },
@@ -141,8 +141,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 979.6899509803923,
-                "y": 50.50122549019605
+                "x": 104.90395220588232,
+                "y": 120.0814950980392
             },
             "weather": {
                 "enable": false,
