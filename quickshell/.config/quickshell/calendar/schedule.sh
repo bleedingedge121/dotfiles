@@ -17,7 +17,7 @@ cat << EOF
     {"type":"class","subject":"Revision","time":"7:00 AM - 7:45 AM","room":"Short notes","start":$(epoch $TODAY "07:00"),"end":$(epoch $TODAY "07:45"),"width":120,"is_compact":false},
     {"type":"class","subject":"Physics — Eduniti PYQ","time":"7:45 AM - 9:45 AM","room":"","start":$(epoch $TODAY "07:45"),"end":$(epoch $TODAY "09:45"),"width":160,"is_compact":false},
     {"type":"class","subject":"Chemistry Questions","time":"9:45 AM - 11:00 AM","room":"","start":$(epoch $TODAY "09:45"),"end":$(epoch $TODAY "11:00"),"width":140,"is_compact":false},
-    {"type":"class","subject":"Maths — Neha ma'am","time":"11:00 AM - 1:30 PM","room":"","start":$(epoch $TODAY "11:00"),"end":$(epoch $TODAY "13:30"),"width":160,"is_compact":false},
+    {"type":"class","subject":"Maths","time":"11:00 AM - 1:30 PM","room":"","start":$(epoch $TODAY "11:00"),"end":$(epoch $TODAY "13:30"),"width":160,"is_compact":false},
     {"type":"gap","desc":"Lunch","start":$(epoch $TODAY "13:30"),"end":$(epoch $TODAY "14:00"),"width":60},
     {"type":"class","subject":"Physics — Eduniti PYQ","time":"2:00 PM - 4:00 PM","room":"","start":$(epoch $TODAY "14:00"),"end":$(epoch $TODAY "16:00"),"width":160,"is_compact":false},
     {"type":"class","subject":"Chemistry Questions","time":"4:00 PM - 5:30 PM","room":"","start":$(epoch $TODAY "16:00"),"end":$(epoch $TODAY "17:30"),"width":140,"is_compact":false},
