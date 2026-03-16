@@ -231,6 +231,37 @@ FloatingWindow {
         onTriggered: schedulePoller.running = true
     }
 
+    // Auto-scroll schedule to current active block
+    function scrollToCurrentBlock() {
+        if (!window.scheduleData || !window.scheduleData.lessons) return;
+        var lessons = window.scheduleData.lessons;
+        var now = window.currentEpoch;
+        var xPos = 0;
+        var scaleRatio = schedScroll.width / 750.0;
+
+        for (var i = 0; i < lessons.length; i++) {
+            var lesson = lessons[i];
+            var blockWidth = (lesson.width || 100) * scaleRatio;
+
+            // Check if this block is currently active
+            if (lesson.start && lesson.end && now >= lesson.start && now <= lesson.end) {
+                // Scroll so the active block is near the left with some padding
+                schedScroll.ScrollBar.horizontal.position = Math.max(0, (xPos - 40) / scheduleRow.width);
+                return;
+            }
+            xPos += blockWidth;
+        }
+    }
+
+    // Scroll to current block when schedule loads or every minute
+    onScheduleDataChanged: Qt.callLater(scrollToCurrentBlock)
+
+    Timer {
+        interval: 60000
+        running: true; repeat: true
+        onTriggered: scrollToCurrentBlock()
+    }
+
     // -------------------------------------------------------------------------
     // CALENDAR GRID LOGIC
     // -------------------------------------------------------------------------
@@ -277,6 +308,7 @@ FloatingWindow {
     Component.onCompleted: {
         introState = 1.0;
         updateCalendarGrid();
+        Qt.callLater(scrollToCurrentBlock);
     }
 
     // -------------------------------------------------------------------------
