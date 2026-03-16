@@ -1,0 +1,164 @@
+{
+  "header": "JEE Grind — Daily Schedule",
+  "link": "",
+  "lessons": [
+    {
+      "type": "class",
+      "subject": "Wake Up",
+      "time": "7:45 AM - 8:00 AM",
+      "room": "",
+      "start_time": "07:45",
+      "end_time": "08:00",
+      "width": 60,
+      "is_compact": true
+    },
+    {
+      "type": "class",
+      "subject": "Revision",
+      "time": "8:00 AM - 9:25 AM",
+      "room": "Short notes",
+      "start_time": "08:00",
+      "end_time": "09:25",
+      "width": 160,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Gym",
+      "time": "9:30 AM - 11:30 AM",
+      "room": "",
+      "start_time": "09:30",
+      "end_time": "11:30",
+      "width": 160,
+      "is_compact": false
+    },
+    {
+     "type": "gap",
+     "desc": "Shower & Breakfast",
+     "start_time": "11:30",
+     "end_time": "12:00",
+     "width": 80
+    },
+    {
+      "type": "class",
+      "subject": "Physics — Eduniti PYQ",
+      "time": "12:00 PM - 1:30 PM",
+      "room": "",
+      "start_time": "12:00",
+      "end_time": "13:30",
+      "width": 160,
+      "is_compact": false
+    },
+    {
+      "type": "gap",
+      "desc": "Lunch",
+      "start_time": "13:30",
+      "end_time": "14:00",
+      "width": 60
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Neha ma'am",
+      "time": "2:00 PM - 3:00 PM",
+      "room": "",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Chemistry Questions",
+      "time": "3:00 PM - 4:00 PM",
+      "room": "",
+      "start_time": "15:00",
+      "end_time": "16:00",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Physics — Eduniti PYQ",
+      "time": "4:00 PM - 5:00 PM",
+      "room": "",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "gap",
+      "desc": "Break",
+      "start_time": "17:00",
+      "end_time": "17:30",
+      "width": 60
+    },
+    {
+      "type": "class",
+      "subject": "Champs Course",
+      "time": "5:30 PM - 7:30 PM",
+      "room": "",
+      "start_time": "17:30",
+      "end_time": "19:30",
+      "width": 160,
+      "is_compact": false
+    },
+    {
+      "type": "gap",
+      "desc": "Dinner",
+      "start_time": "19:30",
+      "end_time": "20:00",
+      "width": 60
+    },
+    {
+      "type": "class",
+      "subject": "BITS Crash Course",
+      "time": "8:00 PM - 10:00 PM",
+      "room": "",
+      "start_time": "20:00",
+      "end_time": "22:00",
+      "width": 160,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Neha ma'am",
+      "time": "10:00 PM - 11:00 PM",
+      "room": "",
+      "start_time": "22:00",
+      "end_time": "23:00",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Chemistry Questions",
+      "time": "11:00 PM - 12:15 AM",
+      "room": "",
+      "start_time": "23:00",
+      "end_time": "24:00",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "LR / Question Solving",
+      "time": "12:15 AM - 1:00 AM",
+      "room": "",
+      "start_time": "00:15",
+      "end_time": "01:15",
+      "width": 120,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Planning & Day Note",
+      "time": "1:15 AM - 1:30 AM",
+      "room": "",
+      "start_time": "01:15",
+      "end_time": "01:30",
+      "width": 100,
+      "is_compact": true
+    }
+  ]
+}

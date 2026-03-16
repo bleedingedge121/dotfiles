@@ -1,0 +1,317 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+
+  "logo": {
+    "type": "builtin",
+    "source":"blackarch",
+    "padding": {
+      "top": 1,
+      "right": 3
+    }
+  },
+
+  "display": {
+    "separator": " → ",
+    "brightColor": true,
+    "color": {
+      "keys": "cyan",
+      "separator": "blue"
+    },
+    "bar": {
+      "char": {
+        "elapsed": "━",
+        "total": "─"
+      },
+      "border": {
+        "left": "[",
+        "right": "]"
+      },
+      "width": 12,
+      "color": {
+        "elapsed": "cyan",
+        "total": "white",
+        "border": "blue"
+      }
+    },
+    "percent": {
+      "type": ["num-color", "bar"],
+      "ndigits": 1,
+      "color": {
+        "green": "32",
+        "yellow": "93",
+        "red": "91"
+      }
+    },
+    "size": {
+      "binaryPrefix": "iec",
+      "ndigits": 2
+    }
+  },
+
+  "modules": [
+    {
+      "type": "title",
+      "format": "{user-name-colored}@{host-name-colored}",
+      "color": {
+        "user": "cyan",
+        "at": "white",
+        "host": "blue"
+      }
+    },
+    {
+      "type": "separator",
+      "string": "─"
+    },
+
+    {
+      "type": "custom",
+      "format": "┌─ SYSTEM ───────────────────────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "│ OS",
+      "keyIcon": " 󰍹"
+    },
+    {
+      "type": "host",
+      "key": "│ Host",
+      "keyIcon": " 󰌢"
+    },
+    {
+      "type": "kernel",
+      "key": "│ Kernel",
+      "keyIcon": " "
+    },
+    {
+      "type": "uptime",
+      "key": "│ Uptime",
+      "keyIcon": " 󰔟"
+    },
+    {
+      "type": "packages",
+      "key": "│ Packages",
+      "keyIcon": " 󰏖"
+    },
+    {
+      "type": "initsystem",
+      "key": "│ Init",
+      "keyIcon": " "
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────┘"
+    },
+
+    {
+      "type": "custom",
+      "format": "┌─ DESKTOP ──────────────────────────────────────┐"
+    },
+    {
+      "type": "display",
+      "key": "│ Display",
+      "keyIcon": " 󰍹",
+      "compactType": "original-with-refresh-rate",
+      "preciseRefreshRate": true
+    },
+    {
+      "type": "de",
+      "key": "│ DE",
+      "keyIcon": " "
+    },
+    {
+      "type": "wm",
+      "key": "│ WM",
+      "keyIcon": " "
+    },
+    {
+      "type": "lm",
+      "key": "│ Login Mgr",
+      "keyIcon": " "
+    },
+    {
+      "type": "terminal",
+      "key": "│ Terminal",
+      "keyIcon": " "
+    },
+    {
+      "type": "shell",
+      "key": "│ Shell",
+      "keyIcon": " "
+    },
+    {
+      "type": "terminalfont",
+      "key": "│ Font",
+      "keyIcon": " "
+    },
+    {
+      "type": "cursor",
+      "key": "│ Cursor",
+      "keyIcon": " 󰆿"
+    },
+    {
+      "type": "editor",
+      "key": "│ Editor",
+      "keyIcon": " "
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────┘"
+    },
+
+    {
+      "type": "custom",
+      "format": "┌─ HARDWARE ─────────────────────────────────────┐"
+    },
+    {
+      "type": "cpu",
+      "key": "│ CPU",
+      "keyIcon": " 󰻠"
+    },
+    {
+      "type": "gpu",
+      "key": "│ GPU",
+      "keyIcon": " 󰾲",
+      "driverSpecific": false
+    },
+    {
+      "type": "command",
+      "key": "│ VRAM",
+      "keyIcon": " ",
+      "text": "cat /sys/class/drm/card*/device/mem_info_vram_total 2>/dev/null | head -1 | awk '{printf \"%.0f GiB\", $1/1024/1024/1024}'"
+    },
+    // {
+    //   "type": "opencl",
+    //   "key": "│ OpenCL",
+    //   "keyIcon": " "
+    // },
+    // {
+    //   "type": "vulkan",
+    //   "key": "│ Vulkan",
+    //   "keyIcon": " "
+    // },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────┘"
+    },
+
+    {
+      "type": "custom",
+      "format": "┌─ MEMORY ───────────────────────────────────────┐"
+    },
+    {
+      "type": "memory",
+      "key": "│ RAM",
+      "keyIcon": " 󰍛",
+      "percent": {
+        "type": 9,
+        "green": 40,
+        "yellow": 70
+      }
+    },
+    {
+      "type": "swap",
+      "key": "│ Swap",
+      "keyIcon": " 󰓡",
+      "percent": {
+        "type": 9,
+        "green": 20,
+        "yellow": 50
+      }
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────┘"
+    },
+
+    // {
+    //   "type": "custom",
+    //   "format": "┌─ STORAGE ──────────────────────────────────────┐"
+    // },
+    // {
+    //   "type": "disk",
+    //   "key": "│ Disk",
+    //   "keyIcon": " 󰋊",
+    //   "folders": "/",
+    //   "percent": {
+    //     "type": 9,
+    //     "green": 50,
+    //     "yellow": 75
+    //   }
+    // },
+    // {
+    //   "type": "physicaldisk",
+    //   "key": "│ Physical",
+    //   "keyIcon": " 󱛟"
+    // },
+    // {
+    //   "type": "custom",
+    //   "format": "└────────────────────────────────────────────────┘"
+    // },
+
+    {
+      "type": "custom",
+      "format": "┌────────────────────────────────────────────────┐"
+    },
+    {
+      "type": "localip",
+      "key": "│ Local IP",
+      "keyIcon": " 󰏓"
+    },
+    {
+      "type": "battery",
+      "key": "│ Battery",
+      "keyIcon": " 󰍛"
+    },
+    // {
+    //   "type": "poweradapter",
+    //   "key": "│ Chassis",
+    //   "keyIcon": " 󰇅"
+    // },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────┘"
+    },
+
+    // {
+    //   "type": "custom",
+    //   "format": "┌─ RUNTIME ──────────────────────────────────────┐"
+    // },
+    // {
+    //   "type": "datetime",
+    //   "key": "│ Date/Time",
+    //   "keyIcon": " 󰃰"
+    // },
+    // {
+    //   "type": "boottime",
+    //   "key": "│ Boot Time",
+    //   "keyIcon": " 󱫐"
+    // },
+    // {
+    //   "type": "loadavg",
+    //   "key": "│ Load Avg",
+    //   "keyIcon": " "
+    // },
+    // {
+    //   "type": "processes",
+    //   "key": "│ Processes",
+    //   "keyIcon": " "
+    // },
+    // {
+    //   "type": "users",
+    //   "key": "│ Users",
+    //   "keyIcon": " ",
+    //   "compact": true
+    // },
+    // {
+    //   "type": "custom",
+    //   "format": "└────────────────────────────────────────────────┘"
+    // },
+
+    {
+      "type": "colors",
+      "symbol": "circle",
+      "width":"10",
+      "paddingLeft": 0
+    }
+  ]
+}

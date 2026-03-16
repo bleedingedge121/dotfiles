@@ -1,0 +1,7 @@
+abbr --add -- gs git status
+abbr --add -- ga git add .
+abbr --add -- gc git commit -m
+abbr --add -- gp git push 
+abbr --add -- upg 'sudo pacman -Syu && yay -Syu'
+abbr --add -- f fastfetch
+abbr --add -- dots 'cd ~/dotfiles;clear'
