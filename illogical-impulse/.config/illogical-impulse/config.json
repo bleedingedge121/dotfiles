@@ -102,7 +102,7 @@
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/wall2.png",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/NoUMUFl.jpeg",
         "widgets": {
             "clock": {
                 "cookie": {
@@ -110,12 +110,12 @@
                     "constantlyRotate": false,
                     "dateInClock": true,
                     "dateStyle": "bubble",
-                    "dialNumberStyle": "none",
-                    "hourHandStyle": "fill",
+                    "dialNumberStyle": "full",
+                    "hourHandStyle": "hollow",
                     "hourMarks": false,
-                    "minuteHandStyle": "bold",
-                    "secondHandStyle": "dot",
-                    "sides": 7,
+                    "minuteHandStyle": "medium",
+                    "secondHandStyle": "classic",
+                    "sides": 14,
                     "timeIndicators": true,
                     "useSineCookie": true
                 },
@@ -133,16 +133,16 @@
                     "vertical": false
                 },
                 "enable": true,
-                "placementStrategy": "free",
+                "placementStrategy": "leastBusy",
                 "quote": {
                     "enable": true,
-                    "text": "The only way to achieve the \nimpossible is to believe it is possible"
+                    "text": "It's only delusional until it works"
                 },
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 34.8126531862747,
-                "y": 103.16283700980387
+                "x": 317.03125,
+                "y": 220
             },
             "weather": {
                 "enable": false,
