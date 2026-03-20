@@ -9,7 +9,7 @@ daily_cache_file="${cache_dir}/daily_weather_cache.json"
 next_day_cache_file="${cache_dir}/next_day_precache.json"
 
 # API Settings
-KEY="091124307f2f2ee79894dec317f6a910"
+KEY="68b364ee4cf2434beb5c78a5ac930585"
 ID="1269515"
 UNIT="metric"
 
