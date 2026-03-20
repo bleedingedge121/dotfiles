@@ -416,7 +416,7 @@ FloatingWindow {
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: -100
                 text: window.weatherData && window.weatherData.forecast[window.weatherView] ? window.weatherData.forecast[window.weatherView].icon : ""
-                font.family: "JetBrainsMono Nerd Font"
+                font.family: "Hack Nerd Font"
                 font.pixelSize: 800
                 color: window.activeWeatherHex
                 opacity: 0.03 + (0.01 * Math.sin(window.globalOrbitAngle * 4))
@@ -579,7 +579,7 @@ FloatingWindow {
                                 Text { 
                                     Layout.alignment: Qt.AlignHCenter
                                     text: modelData.icon || (window.weatherData && window.weatherData.forecast[window.weatherView] ? window.weatherData.forecast[window.weatherView].icon : "")
-                                    font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 18
+                                    font.family: "Hack Nerd Font"; font.pixelSize: 18
                                     color: isHighlighted ? window.base : (modelData.hex || window.activeWeatherHex)
                                     
                                     transform: Translate { y: hrMa.containsMouse ? -3 : 0 }
@@ -628,7 +628,7 @@ FloatingWindow {
                         Rectangle {
                             width: 32; height: 32; radius: 16
                             color: prevMa.containsMouse ? window.surface1 : "transparent"
-                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; color: window.text; font.pixelSize: 16 }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "Hack Nerd Font"; color: window.text; font.pixelSize: 16 }
                             MouseArea { id: prevMa; anchors.fill: parent; hoverEnabled: true; onClicked: window.monthOffset-- }
                         }
                         
@@ -645,7 +645,7 @@ FloatingWindow {
                         Rectangle {
                             width: 32; height: 32; radius: 16
                             color: nextMa.containsMouse ? window.surface1 : "transparent"
-                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; color: window.text; font.pixelSize: 16 }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "Hack Nerd Font"; color: window.text; font.pixelSize: 16 }
                             MouseArea { id: nextMa; anchors.fill: parent; hoverEnabled: true; onClicked: window.monthOffset++ }
                         }
                     }
@@ -754,7 +754,7 @@ FloatingWindow {
                             }
                             
                             Text { 
-                                anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 18
+                                anchors.centerIn: parent; text: ""; font.family: "Hack Nerd Font"; font.pixelSize: 18
                                 color: parent.containsMouse ? window.activeWeatherHex : window.overlay1
                                 transform: Translate { x: parent.containsMouse ? -5 : wPrevMa.pulseOffset }
                                 Behavior on transform { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
@@ -781,7 +781,7 @@ FloatingWindow {
                             }
                             
                             Text { 
-                                anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 18
+                                anchors.centerIn: parent; text: ""; font.family: "Hack Nerd Font"; font.pixelSize: 18
                                 color: parent.containsMouse ? window.activeWeatherHex : window.overlay1
                                 transform: Translate { x: parent.containsMouse ? 5 : wNextMa.pulseOffset }
                                 Behavior on transform { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
@@ -918,7 +918,7 @@ FloatingWindow {
                                     
                                     Text { 
                                         text: modelData.icon
-                                        font.family: "JetBrainsMono Nerd Font"
+                                        font.family: "Hack Nerd Font"
                                         font.pixelSize: 12
                                         color: gaugeMa.containsMouse ? window.activeWeatherHex : window.overlay0
                                         Behavior on color { ColorAnimation { duration: 200 } }
@@ -1021,7 +1021,7 @@ FloatingWindow {
                         
                         Rectangle {
                             width: 40; height: 40; radius: 20; color: window.surface0
-                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 18; color: window.mauve }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "Hack Nerd Font"; font.pixelSize: 18; color: window.mauve }
                         }
                         
                         Text { 
@@ -1044,7 +1044,7 @@ FloatingWindow {
                         //         anchors.centerIn: parent
                         //         spacing: 6
                         //         Text { text: "Open Web"; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: 12; color: schLinkMa.containsMouse ? window.base : window.text }
-                        //         Text { text: ""; font.family: "JetBrainsMono Nerd Font"; color: schLinkMa.containsMouse ? window.base : window.text }
+                        //         Text { text: ""; font.family: "Hack Nerd Font"; color: schLinkMa.containsMouse ? window.base : window.text }
                         //     }
                             
                         //     MouseArea {
@@ -1183,14 +1183,14 @@ FloatingWindow {
                                                 RowLayout {
                                                     visible: !modelData.is_compact
                                                     spacing: 8
-                                                    Text { text: "󰅐"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13; color: classNode.isActive ? window.mauve : window.overlay1 }
+                                                    Text { text: "󰅐"; font.family: "Hack Nerd Font"; font.pixelSize: 13; color: classNode.isActive ? window.mauve : window.overlay1 }
                                                     Text { text: modelData.time || ""; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: 12; color: classNode.isActive ? window.text : window.overlay1 }
                                                 }
 
                                                 RowLayout {
                                                     visible: !modelData.is_compact && (modelData.room || "") !== ""
                                                     spacing: 8
-                                                    Text { text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: 13; color: classNode.isPast ? window.surface2 : window.peach }
+                                                    Text { text: ""; font.family: "Hack Nerd Font"; font.pixelSize: 13; color: classNode.isPast ? window.surface2 : window.peach }
                                                     Text { text: modelData.room || ""; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: 11; color: window.subtext1; elide: Text.ElideRight; Layout.fillWidth: true }
                                                 }
                                             }

@@ -17,14 +17,14 @@ mkdir -p "${cache_dir}"
 
 get_icon() {
     case $1 in
-        "50d"|"50n") icon=""; quote="Mist" ;;
-        "01d") icon=""; quote="Sunny" ;;
-        "01n") icon=""; quote="Clear" ;;
-        "02d"|"02n"|"03d"|"03n"|"04d"|"04n") icon=""; quote="Cloudy" ;;
-        "09d"|"09n"|"10d"|"10n") icon=""; quote="Rainy" ;;
-        "11d"|"11n") icon=""; quote="Storm" ;;
-        "13d"|"13n") icon=""; quote="Snow" ;;
-        *) icon=""; quote="Unknown" ;;
+        "50d"|"50n") icon="󰖑"; quote="Mist" ;;
+        "01d") icon="󰖙"; quote="Sunny" ;;
+        "01n") icon="󰖔"; quote="Clear" ;;
+        "02d"|"02n"|"03d"|"03n"|"04d"|"04n") icon="󰖐"; quote="Cloudy" ;;
+        "09d"|"09n"|"10d"|"10n") icon="󰖗"; quote="Rainy" ;;
+        "11d"|"11n") icon="󰖓"; quote="Storm" ;;
+        "13d"|"13n") icon="󰖘"; quote="Snow" ;;
+        *) icon="󰖙"; quote="Unknown" ;;
     esac
     echo "$icon|$quote"
 }
