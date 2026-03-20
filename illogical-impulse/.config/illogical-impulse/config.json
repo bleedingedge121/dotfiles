@@ -124,14 +124,14 @@
                 "enable": true,
                 "placementStrategy": "leastBusy",
                 "quote": {
-                    "enable": true,
+                    "enable": false,
                     "text": "It's only delusional until it works"
                 },
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 590.03125,
-                "y": 217
+                "x": 957.53125,
+                "y": 220
             },
             "weather": {
                 "enable": false,
@@ -188,7 +188,7 @@
         "weather": {
             "city": "Jaipur",
             "enable": true,
-            "enableGPS": false,
+            "enableGPS": true,
             "fetchInterval": 10,
             "useUSCS": false
         },
@@ -506,7 +506,7 @@
             "focus": 3600,
             "longBreak": 900
         },
-        "secondPrecision": false,
+        "secondPrecision": true,
         "shortDateFormat": "dd/MM"
     },
     "tray": {
