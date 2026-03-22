@@ -57,7 +57,7 @@
             "terminalGenerationProps": {
                 "forceDarkMode": true,
                 "harmonizeThreshold": 100,
-                "harmony": 0.9,
+                "harmony": 0.8,
                 "termFgBoost": 0.35
             }
         }
@@ -84,14 +84,14 @@
         "hideWhenFullscreen": true,
         "parallax": {
             "autoVertical": false,
-            "enableSidebar": true,
+            "enableSidebar": false,
             "enableWorkspace": false,
             "vertical": false,
             "widgetsFactor": 1.2,
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/wallhaven-lywpjl.jpg",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb2_japan2026.png",
         "widgets": {
             "clock": {
                 "cookie": {
@@ -102,9 +102,9 @@
                     "dialNumberStyle": "full",
                     "hourHandStyle": "hollow",
                     "hourMarks": false,
-                    "minuteHandStyle": "medium",
+                    "minuteHandStyle": "thin",
                     "secondHandStyle": "classic",
-                    "sides": 14,
+                    "sides": 23,
                     "timeIndicators": true,
                     "useSineCookie": true
                 },
@@ -122,16 +122,16 @@
                     "vertical": false
                 },
                 "enable": true,
-                "placementStrategy": "leastBusy",
+                "placementStrategy": "free",
                 "quote": {
-                    "enable": false,
+                    "enable": true,
                     "text": "It's only delusional until it works"
                 },
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 957.53125,
-                "y": 220
+                "x": 1101.7699142156864,
+                "y": 511.8941482843137
             },
             "weather": {
                 "enable": false,
@@ -512,7 +512,7 @@
     "tray": {
         "filterPassive": true,
         "invertPinnedItems": false,
-        "monochromeIcons": false,
+        "monochromeIcons": true,
         "pinnedItems": [
             "Fcitx"
         ],
