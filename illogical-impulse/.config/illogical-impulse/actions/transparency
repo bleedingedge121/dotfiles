@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+CONFIG="$HOME/.config/illogical-impulse/config.json"
+ARGS="$*"
+
+if ! command -v jq &>/dev/null; then
+    exit 1
+fi
+
+BG=""
+CT=""
+
+for arg in $ARGS; do
+    if [[ "$arg" =~ ^bg:([0-9.]+)$ ]]; then
+        BG="${BASH_REMATCH[1]}"
+    elif [[ "$arg" =~ ^c:([0-9.]+)$ ]]; then
+        CT="${BASH_REMATCH[1]}"
+    fi
+done
+
+if [[ -z "$BG" && -z "$CT" ]]; then
+    CURRENT=$(jq '.appearance.transparency.automatic' "$CONFIG")
+    if [[ "$CURRENT" == "true" ]]; then
+        NEW="false"
+    else
+        NEW="true"
+    fi
+    jq --argjson val "$NEW" '.appearance.transparency.automatic = $val' "$CONFIG" \
+        > /tmp/ii_config_tmp.json \
+        && mv /tmp/ii_config_tmp.json "$CONFIG"
+    exit 0
+fi
+
+TMP=$(jq '.' "$CONFIG")
+
+if [[ -n "$BG" ]]; then
+    TMP=$(echo "$TMP" | jq --argjson val "$BG" '.appearance.transparency.backgroundTransparency = $val')
+fi
+if [[ -n "$CT" ]]; then
+    TMP=$(echo "$TMP" | jq --argjson val "$CT" '.appearance.transparency.contentTransparency = $val')
+fi
+
+echo "$TMP" > /tmp/ii_config_tmp.json && mv /tmp/ii_config_tmp.json "$CONFIG"
+EOF
