@@ -41,12 +41,12 @@
       "title": "Google Sans Flex"
     },
     "palette": {
-      "accentColor": "#BC0100",
+      "accentColor": "",
       "type": "scheme-content"
     },
     "transparency": {
-      "automatic": false,
-      "backgroundTransparency": 0.85,
+      "automatic": true,
+      "backgroundTransparency": 0.95,
       "contentTransparency": 0.75,
       "enable": true
     },
@@ -91,7 +91,7 @@
       "workspaceZoom": 1.05
     },
     "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb2_japan2026.png",
+    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/a_drawing_of_a_sun_and_a_ball.png",
     "widgets": {
       "clock": {
         "cookie": {
@@ -99,12 +99,12 @@
           "constantlyRotate": false,
           "dateInClock": true,
           "dateStyle": "bubble",
-          "dialNumberStyle": "full",
-          "hourHandStyle": "hollow",
+          "dialNumberStyle": "none",
+          "hourHandStyle": "fill",
           "hourMarks": false,
-          "minuteHandStyle": "thin",
-          "secondHandStyle": "classic",
-          "sides": 23,
+          "minuteHandStyle": "medium",
+          "secondHandStyle": "dot",
+          "sides": 9,
           "timeIndicators": true,
           "useSineCookie": true
         },
@@ -122,7 +122,7 @@
           "vertical": false
         },
         "enable": true,
-        "placementStrategy": "free",
+        "placementStrategy": "leastBusy",
         "quote": {
           "enable": true,
           "text": "It's only delusional until it works"
