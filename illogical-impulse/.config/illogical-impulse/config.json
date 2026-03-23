@@ -41,7 +41,7 @@
             "title": "Google Sans Flex"
         },
         "palette": {
-            "accentColor": "",
+            "accentColor": "#8F1819",
             "type": "scheme-content"
         },
         "transparency": {
@@ -91,7 +91,7 @@
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb2_japan2026.png",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb_japan2026.png",
         "widgets": {
             "clock": {
                 "cookie": {
@@ -130,8 +130,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 1101.7699142156864,
-                "y": 511.8941482843137
+                "x": 76.59420955882322,
+                "y": 460.88893995098033
             },
             "weather": {
                 "enable": false,
