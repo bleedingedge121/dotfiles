@@ -41,13 +41,13 @@
       "title": "Google Sans Flex"
     },
     "palette": {
-      "accentColor": "#850914",
+      "accentColor": "#BC0100",
       "type": "scheme-content"
     },
     "transparency": {
-      "automatic": true,
+      "automatic": false,
       "backgroundTransparency": 0.95,
-      "contentTransparency": 0.8,
+      "contentTransparency": 0.75,
       "enable": true
     },
     "wallpaperTheming": {
@@ -91,7 +91,7 @@
       "workspaceZoom": 1.05
     },
     "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb_japan2026.png",
+    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb2_japan2026.png",
     "widgets": {
       "clock": {
         "cookie": {
@@ -130,8 +130,8 @@
         "showOnlyWhenLocked": false,
         "style": "cookie",
         "styleLocked": "cookie",
-        "x": 69.34849877450944,
-        "y": 496.47028186274497
+        "x": 1171.0450367647054,
+        "y": 560.4255514705881
       },
       "weather": {
         "enable": false,
@@ -179,7 +179,7 @@
       "showKeyboardToggle": false,
       "showMicToggle": false,
       "showPerformanceProfileToggle": true,
-      "showScreenRecord": false,
+      "showScreenRecord": true,
       "showScreenSnip": true
     },
     "verbose": true,
@@ -197,7 +197,7 @@
       "numberMap": [],
       "showAppIcons": true,
       "showNumberDelay": 300,
-      "shown": 6,
+      "shown": 7,
       "useNerdFont": false
     }
   },
@@ -502,13 +502,13 @@
       "focus": 3600,
       "longBreak": 900
     },
-    "secondPrecision": true,
+    "secondPrecision": false,
     "shortDateFormat": "dd/MM"
   },
   "tray": {
     "filterPassive": true,
     "invertPinnedItems": false,
-    "monochromeIcons": true,
+    "monochromeIcons": false,
     "pinnedItems": [
       "Fcitx"
     ],
