@@ -4,9 +4,9 @@
 */
 
 /* Accents */
-@define-color accent_color #ffb4ac;
-@define-color accent_fg_color #680007;
-@define-color accent_bg_color #ffb4ac;
+@define-color accent_color #ffb3ae;
+@define-color accent_fg_color #68000b;
+@define-color accent_bg_color #ffb3ae;
 @define-color destructive_bg_color #93000a;
 @define-color destructive_fg_color #ffdad6;
 @define-color destructive_color #ffb4ab;
@@ -14,7 +14,7 @@
 @define-color success_fg_color #D1E9D6;
 @define-color success_color #B5CCBA;
 /* Base surfaces */
-@define-color window_bg_color #1c100f;
+@define-color window_bg_color #1d100f;
 @define-color window_fg_color #f6ddda;
 @define-color headerbar_bg_color #2a1c1b;
 @define-color headerbar_backdrop_color #2a1c1b;
@@ -34,5 +34,5 @@
 /* Popups */
 @define-color popover_bg_color #403130;
 @define-color popover_fg_color #f6ddda;
-@define-color dialog_bg_color #352725;
+@define-color dialog_bg_color #352625;
 @define-color dialog_fg_color #f6ddda;
