@@ -42,7 +42,7 @@
     },
     "palette": {
       "accentColor": "",
-      "type": "scheme-content"
+      "type": "auto"
     },
     "transparency": {
       "automatic": true,
@@ -90,21 +90,21 @@
       "widgetsFactor": 1.2,
       "workspaceZoom": 1.05
     },
-    "thumbnailPath": "/home/nox/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/a_drawing_of_a_sun_and_a_ball.png",
+    "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
+    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/a_black_background_with_white_text.jpg",
     "widgets": {
       "clock": {
         "cookie": {
           "aiStyling": true,
           "constantlyRotate": false,
           "dateInClock": true,
-          "dateStyle": "bubble",
+          "dateStyle": "hide",
           "dialNumberStyle": "none",
           "hourHandStyle": "fill",
           "hourMarks": false,
-          "minuteHandStyle": "medium",
+          "minuteHandStyle": "bold",
           "secondHandStyle": "dot",
-          "sides": 9,
+          "sides": 6,
           "timeIndicators": true,
           "useSineCookie": true
         },
