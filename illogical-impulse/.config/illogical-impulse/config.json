@@ -41,7 +41,7 @@
             "title": "Google Sans Flex"
         },
         "palette": {
-            "accentColor": "",
+            "accentColor": "#CB1F2F",
             "type": "scheme-content"
         },
         "transparency": {
@@ -91,20 +91,20 @@
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/wallhaven-5y52y5.jpg",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/vcarb2_japan2026.png",
         "widgets": {
             "clock": {
                 "cookie": {
                     "aiStyling": true,
                     "constantlyRotate": false,
                     "dateInClock": true,
-                    "dateStyle": "rect",
+                    "dateStyle": "bubble",
                     "dialNumberStyle": "full",
-                    "hourHandStyle": "classic",
+                    "hourHandStyle": "hollow",
                     "hourMarks": false,
-                    "minuteHandStyle": "classic",
+                    "minuteHandStyle": "thin",
                     "secondHandStyle": "classic",
-                    "sides": 14,
+                    "sides": 23,
                     "timeIndicators": true,
                     "useSineCookie": true
                 },
@@ -122,7 +122,7 @@
                     "vertical": false
                 },
                 "enable": true,
-                "placementStrategy": "leastBusy",
+                "placementStrategy": "free",
                 "quote": {
                     "enable": true,
                     "text": "It's only delusional until it works"
@@ -130,8 +130,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 600.53125,
-                "y": 241
+                "x": 1182.190257352941,
+                "y": 563.2161458333333
             },
             "weather": {
                 "enable": false,
