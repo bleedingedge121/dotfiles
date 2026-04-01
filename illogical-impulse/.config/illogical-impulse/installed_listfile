@@ -14,8 +14,10 @@
 /home/nexus/.config/hypr/custom/rules.conf
 /home/nexus/.config/hypr/custom/scripts/__restore_video_wallpaper.sh
 /home/nexus/.config/hypr/hypridle.conf
+/home/nexus/.config/hypr/hypridle.conf.new
 /home/nexus/.config/hypr/hyprland/colors.conf
 /home/nexus/.config/hypr/hyprland.conf
+/home/nexus/.config/hypr/hyprland.conf.new
 /home/nexus/.config/hypr/hyprland/env.conf
 /home/nexus/.config/hypr/hyprland/execs.conf
 /home/nexus/.config/hypr/hyprland/general.conf
@@ -30,9 +32,13 @@
 /home/nexus/.config/hypr/hyprland/scripts/start_geoclue_agent.sh
 /home/nexus/.config/hypr/hyprland/scripts/workspace_action.sh
 /home/nexus/.config/hypr/hyprland/scripts/zoom.sh
+/home/nexus/.config/hypr/hyprland/shellOverrides/main.conf
 /home/nexus/.config/hypr/hyprlock.conf
+/home/nexus/.config/hypr/hyprlock.conf.new
 /home/nexus/.config/hypr/monitors.conf
+/home/nexus/.config/hypr/monitors.conf.new
 /home/nexus/.config/hypr/workspaces.conf
+/home/nexus/.config/hypr/workspaces.conf.new
 /home/nexus/.config/illogical-impulse/installed_true
 /home/nexus/.config/kdeglobals
 /home/nexus/.config/kitty/kitty.conf
@@ -341,8 +347,10 @@
 /home/nexus/.config/quickshell/ii/modules/common/models/AdaptedMaterialScheme.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/AnimatedTabIndexPair.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/FolderListModelWithHistory.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/hyprland/HyprlandConfigOption.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/IndexModel.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/LauncherSearchResult.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/NestableObject.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/quickToggles/AntiFlashbangToggle.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/quickToggles/AudioToggle.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/quickToggles/BluetoothToggle.qml
@@ -566,6 +574,7 @@
 /home/nexus/.config/quickshell/ii/modules/ii/mediaControls/PlayerControl.qml
 /home/nexus/.config/quickshell/ii/modules/ii/notificationPopup/NotificationPopup.qml
 /home/nexus/.config/quickshell/ii/modules/ii/onScreenDisplay/indicators/BrightnessIndicator.qml
+/home/nexus/.config/quickshell/ii/modules/ii/onScreenDisplay/indicators/GammaIndicator.qml
 /home/nexus/.config/quickshell/ii/modules/ii/onScreenDisplay/indicators/VolumeIndicator.qml
 /home/nexus/.config/quickshell/ii/modules/ii/onScreenDisplay/OnScreenDisplay.qml
 /home/nexus/.config/quickshell/ii/modules/ii/onScreenDisplay/OsdValueIndicator.qml
@@ -869,6 +878,7 @@
 /home/nexus/.config/quickshell/ii/scripts/colors/terminal/scheme-base.json
 /home/nexus/.config/quickshell/ii/scripts/colors/terminal/sequences.txt
 /home/nexus/.config/quickshell/ii/scripts/hyprland/get_keybinds.py
+/home/nexus/.config/quickshell/ii/scripts/hyprland/hyprconfigurator.py
 /home/nexus/.config/quickshell/ii/scripts/images/find_regions.py
 /home/nexus/.config/quickshell/ii/scripts/images/find-regions-venv.sh
 /home/nexus/.config/quickshell/ii/scripts/images/least_busy_region.py
@@ -906,6 +916,9 @@
 /home/nexus/.config/quickshell/ii/services/Emojis.qml
 /home/nexus/.config/quickshell/ii/services/FirstRunExperience.qml
 /home/nexus/.config/quickshell/ii/services/GlobalFocusGrab.qml
+/home/nexus/.config/quickshell/ii/services/hyprlandAntiFlashbangShader/anti-flashbang.glsl
+/home/nexus/.config/quickshell/ii/services/HyprlandAntiFlashbangShader.qml
+/home/nexus/.config/quickshell/ii/services/HyprlandConfig.qml
 /home/nexus/.config/quickshell/ii/services/HyprlandData.qml
 /home/nexus/.config/quickshell/ii/services/HyprlandKeybinds.qml
 /home/nexus/.config/quickshell/ii/services/HyprlandXkb.qml
@@ -939,6 +952,8 @@
 /home/nexus/.config/quickshell/ii/shell.qml
 /home/nexus/.config/quickshell/ii/translations/de_DE.json
 /home/nexus/.config/quickshell/ii/translations/en_US.json
+/home/nexus/.config/quickshell/ii/translations/es_MX.json
+/home/nexus/.config/quickshell/ii/translations/fr_FR.json
 /home/nexus/.config/quickshell/ii/translations/he_HE.json
 /home/nexus/.config/quickshell/ii/translations/id_ID.json
 /home/nexus/.config/quickshell/ii/translations/it_IT.json
