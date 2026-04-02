@@ -2,6 +2,7 @@
 if status is-interactive
     # No greeting
     set fish_greeting
+    fish_add_path ~/.local/bin
 
     # Use starship
     function starship_transient_prompt_func
@@ -24,6 +25,9 @@ if status is-interactive
     alias claer "printf '\033[2J\033[3J\033[1;1H'"
     alias pamcan pacman
     alias q 'qs -c ii'
+    alias farch 'fastfetch --logo arch'
+    alias btp 'btop --force-utf'
+    
     if test "$TERM" != "linux"
         alias ls 'eza --icons'
     end
