@@ -33,6 +33,7 @@
 /home/nexus/.config/hypr/hyprland/scripts/workspace_action.sh
 /home/nexus/.config/hypr/hyprland/scripts/zoom.sh
 /home/nexus/.config/hypr/hyprland/shellOverrides/main.conf
+/home/nexus/.config/hypr/hyprland/variables.conf
 /home/nexus/.config/hypr/hyprlock.conf
 /home/nexus/.config/hypr/hyprlock.conf.new
 /home/nexus/.config/hypr/monitors.conf
@@ -347,6 +348,10 @@
 /home/nexus/.config/quickshell/ii/modules/common/models/AdaptedMaterialScheme.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/AnimatedTabIndexPair.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/FolderListModelWithHistory.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/gCloud/GCloudApi.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/gCloud/GCloudTranslate.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/gCloud/GCloudVision.qml
+/home/nexus/.config/quickshell/ii/modules/common/models/gCloud/GCloudVisionResult.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/hyprland/HyprlandConfigOption.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/IndexModel.qml
 /home/nexus/.config/quickshell/ii/modules/common/models/LauncherSearchResult.qml
@@ -374,6 +379,7 @@
 /home/nexus/.config/quickshell/ii/modules/common/panels/lock/pam/fprintd.conf
 /home/nexus/.config/quickshell/ii/modules/common/Persistent.qml
 /home/nexus/.config/quickshell/ii/modules/common/utils/ImageDownloaderProcess.qml
+/home/nexus/.config/quickshell/ii/modules/common/utils/MultiTurnProcess.qml
 /home/nexus/.config/quickshell/ii/modules/common/utils/ScreenshotAction.qml
 /home/nexus/.config/quickshell/ii/modules/common/utils/TempScreenshotProcess.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/AddressBar.qml
@@ -400,6 +406,7 @@
 /home/nexus/.config/quickshell/ii/modules/common/widgets/DialogListItem.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/DirectoryIcon.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/DragManager.qml
+/home/nexus/.config/quickshell/ii/modules/common/widgets/ErrorShakeAnimation.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/FadeLoader.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/Favicon.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/FloatingActionButton.qml
@@ -412,6 +419,7 @@
 /home/nexus/.config/quickshell/ii/modules/common/widgets/IconToolbarButton.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/KeyboardKey.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/LightDarkPreferenceButton.qml
+/home/nexus/.config/quickshell/ii/modules/common/widgets/MaskMultiEffect.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/MaterialCookie.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/MaterialLoadingIndicator.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/MaterialShape.qml
@@ -467,6 +475,7 @@
 /home/nexus/.config/quickshell/ii/modules/common/widgets/shapes/shapes/rounded-polygon.js
 /home/nexus/.config/quickshell/ii/modules/common/widgets/shapes/shapes/utils.js
 /home/nexus/.config/quickshell/ii/modules/common/widgets/SineCookie.qml
+/home/nexus/.config/quickshell/ii/modules/common/widgets/SqueezedAnnotationStyledText.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/StyledBlurEffect.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/StyledComboBox.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/StyledDropShadow.qml
@@ -488,6 +497,7 @@
 /home/nexus/.config/quickshell/ii/modules/common/widgets/StyledToolTip.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/ThumbnailImage.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/ToolbarButton.qml
+/home/nexus/.config/quickshell/ii/modules/common/widgets/ToolbarPairedFab.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/Toolbar.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/ToolbarTabBar.qml
 /home/nexus/.config/quickshell/ii/modules/common/widgets/ToolbarTabButton.qml
@@ -616,6 +626,9 @@
 /home/nexus/.config/quickshell/ii/modules/ii/regionSelector/RegionSelector.qml
 /home/nexus/.config/quickshell/ii/modules/ii/regionSelector/TargetRegion.qml
 /home/nexus/.config/quickshell/ii/modules/ii/screenCorners/ScreenCorners.qml
+/home/nexus/.config/quickshell/ii/modules/ii/screenTranslator/ScreenTextOverlay.qml
+/home/nexus/.config/quickshell/ii/modules/ii/screenTranslator/ScreenTranslatorPanel.qml
+/home/nexus/.config/quickshell/ii/modules/ii/screenTranslator/ScreenTranslator.qml
 /home/nexus/.config/quickshell/ii/modules/ii/sessionScreen/SessionActionButton.qml
 /home/nexus/.config/quickshell/ii/modules/ii/sessionScreen/SessionScreen.qml
 /home/nexus/.config/quickshell/ii/modules/ii/sidebarLeft/aiChat/AiMessageControlButton.qml
@@ -883,6 +896,8 @@
 /home/nexus/.config/quickshell/ii/scripts/images/find-regions-venv.sh
 /home/nexus/.config/quickshell/ii/scripts/images/least_busy_region.py
 /home/nexus/.config/quickshell/ii/scripts/images/least-busy-region-venv.sh
+/home/nexus/.config/quickshell/ii/scripts/images/text_color.py
+/home/nexus/.config/quickshell/ii/scripts/images/text-color-venv.sh
 /home/nexus/.config/quickshell/ii/scripts/keyring/is_unlocked.sh
 /home/nexus/.config/quickshell/ii/scripts/keyring/try_lookup.sh
 /home/nexus/.config/quickshell/ii/scripts/keyring/unlock.sh
@@ -915,7 +930,10 @@
 /home/nexus/.config/quickshell/ii/services/EasyEffects.qml
 /home/nexus/.config/quickshell/ii/services/Emojis.qml
 /home/nexus/.config/quickshell/ii/services/FirstRunExperience.qml
+/home/nexus/.config/quickshell/ii/services/gCloud/token_from_key.py
+/home/nexus/.config/quickshell/ii/services/gCloud/token-from-key-venv.sh
 /home/nexus/.config/quickshell/ii/services/GlobalFocusGrab.qml
+/home/nexus/.config/quickshell/ii/services/GoogleCloud.qml
 /home/nexus/.config/quickshell/ii/services/hyprlandAntiFlashbangShader/anti-flashbang.glsl
 /home/nexus/.config/quickshell/ii/services/HyprlandAntiFlashbangShader.qml
 /home/nexus/.config/quickshell/ii/services/HyprlandConfig.qml
