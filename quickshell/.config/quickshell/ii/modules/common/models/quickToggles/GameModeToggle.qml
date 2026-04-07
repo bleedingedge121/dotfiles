@@ -6,7 +6,7 @@ import qs.services
 QuickToggleModel {
     id: root
     name: Translation.tr("Game mode")
-    toggled: !confOpt.value
+    toggled: !confOpt.value 
     icon: "gamepad"
 
     mainAction: () => {

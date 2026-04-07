@@ -88,7 +88,7 @@
             "enableWorkspace": false,
             "vertical": false,
             "widgetsFactor": 1.2,
-            "workspaceZoom": 1.05
+            "workspaceZoom": 1
         },
         "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
         "wallpaperPath": "/home/nexus/Pictures/Wallpapers/Ilya Kuvshinov.jpg",
@@ -130,8 +130,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "digital",
                 "styleLocked": "digital",
-                "x": 714.7034313725491,
-                "y": 257.1208639705882
+                "x": 724.066942401961,
+                "y": 253.32184436274497
             },
             "weather": {
                 "enable": false,
@@ -180,7 +180,7 @@
             "showKeyboardToggle": true,
             "showMicToggle": false,
             "showPerformanceProfileToggle": true,
-            "showScreenRecord": false,
+            "showScreenRecord": true,
             "showScreenSnip": true
         },
         "verbose": true,
@@ -468,10 +468,6 @@
                     },
                     {
                         "size": 1,
-                        "type": "gameMode"
-                    },
-                    {
-                        "size": 1,
                         "type": "cloudflareWarp"
                     },
                     {
@@ -481,6 +477,10 @@
                     {
                         "size": 1,
                         "type": "onScreenKeyboard"
+                    },
+                    {
+                        "size": 1,
+                        "type": "gameMode"
                     }
                 ]
             },
@@ -567,7 +567,7 @@
     },
     "workSafety": {
         "enable": {
-            "clipboard": true,
+            "clipboard": false,
             "wallpaper": false
         },
         "triggerCondition": {
