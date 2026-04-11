@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEE Schedule Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --accent: #7c6af7;
+    --accent-dim: rgba(124,106,247,0.15);
+    --accent-border: rgba(124,106,247,0.35);
+    --warn: #f0a045;
+    --warn-dim: rgba(240,160,69,0.12);
+    --warn-border: rgba(240,160,69,0.3);
+    --danger: #e05555;
+    --danger-dim: rgba(224,85,85,0.1);
+    --success: #4caf82;
+    --success-dim: rgba(76,175,130,0.13);
+    --success-border: rgba(76,175,130,0.3);
+    --font-sans: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color: var(--text); font-family: var(--font-sans); }
+  body { min-height: 100vh; }
+  .shell { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  /* Header */
+  .header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .header p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 5px; }
+  .save-status { font-family: var(--font-mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .save-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); transition: background 0.4s; }
+  .save-dot.saved { background: var(--success); }
+
+  /* Toolbar */
+  .toolbar { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn { font-family: var(--font-sans); font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border2); background: var(--surface); color: var(--text); cursor: pointer; transition: background 0.15s, border-color 0.15s; white-space: nowrap; }
+  .btn:hover { background: var(--surface2); border-color: rgba(255,255,255,0.2); }
+  .btn.accent { background: var(--accent-dim); border-color: var(--accent-border); color: #a89eff; }
+  .btn.accent:hover { background: rgba(124,106,247,0.22); }
+  .btn.export { background: var(--success-dim); border-color: var(--success-border); color: var(--success); margin-left: auto; }
+  .btn.export:hover { background: rgba(76,175,130,0.2); }
+  .btn.warn-btn { background: var(--warn-dim); border-color: var(--warn-border); color: var(--warn); }
+
+  /* Stats */
+  .stats { display: flex; gap: 24px; margin-bottom: 1.25rem; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); flex-wrap: wrap; }
+  .stat { display: flex; gap: 7px; align-items: baseline; }
+  .stat-val { font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+
+  /* Table layout — fixed columns, no wrapping */
+  .schedule-table { width: 100%; border-collapse: separate; border-spacing: 0 4px; }
+
+  .schedule-table thead th {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); font-weight: 400;
+    padding: 0 6px 6px; text-align: left;
+  }
+  .schedule-table thead th:first-child { width: 28px; }
+  .th-time { width: 96px; }
+  .th-notes { width: 140px; }
+  .th-pill { width: 56px; text-align: center !important; }
+  .th-del { width: 36px; }
+
+  .schedule-table tbody tr { background: var(--surface); transition: opacity 0.15s; }
+  .schedule-table tbody tr.gap-row { background: transparent; }
+  .schedule-table tbody tr.dragging { opacity: 0.25; }
+  .schedule-table tbody tr.drag-over td { border-top: 2px solid var(--accent); }
+
+  .schedule-table tbody td {
+    padding: 5px 6px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .schedule-table tbody td:first-child { border-left: 1px solid var(--border); border-radius: 7px 0 0 7px; padding-left: 10px; }
+  .schedule-table tbody td:last-child { border-right: 1px solid var(--border); border-radius: 0 7px 7px 0; padding-right: 8px; }
+  .schedule-table tbody tr.gap-row td { border-color: var(--border2); border-style: dashed; }
+  .schedule-table tbody tr:hover td { border-color: var(--border2); }
+
+  .handle { cursor: grab; color: var(--muted); font-size: 14px; user-select: none; display: flex; align-items: center; }
+  .handle:active { cursor: grabbing; }
+
+  .schedule-table input[type=time],
+  .schedule-table input[type=text] {
+    font-family: var(--font-mono); font-size: 12px;
+    padding: 5px 7px; border: 1px solid var(--border);
+    border-radius: 5px; background: var(--surface2);
+    color: var(--text); width: 100%; outline: none;
+    transition: border-color 0.15s;
+  }
+  .schedule-table input[type=text] { font-family: var(--font-sans); font-size: 13px; }
+  .schedule-table input:focus { border-color: var(--accent-border); }
+
+  .type-pill { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; font-weight: 500; white-space: nowrap; display: inline-block; }
+  .pill-class { background: var(--accent-dim); color: #a89eff; border: 1px solid var(--accent-border); }
+  .pill-gap { background: var(--warn-dim); color: var(--warn); border: 1px solid var(--warn-border); }
+
+  .del-btn { width: 28px; height: 28px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+  .del-btn:hover { color: var(--danger); border-color: rgba(224,85,85,0.3); background: var(--danger-dim); }
+
+  /* Export */
+  .export-area { display: none; margin-top: 1.25rem; }
+  .export-area.open { display: block; }
+  .export-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .export-header span { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+  .export-area textarea { width: 100%; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; padding: 12px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface2); color: var(--text); resize: vertical; min-height: 200px; outline: none; }
+
+  /* Toast */
+  .toast { position: fixed; bottom: 22px; right: 22px; background: var(--surface2); border: 1px solid var(--success-border); color: var(--success); font-family: var(--font-mono); font-size: 12px; padding: 9px 16px; border-radius: 7px; opacity: 0; transform: translateY(6px); transition: opacity 0.22s, transform 0.22s; pointer-events: none; z-index: 100; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .help { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 1rem; line-height: 2; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="header">
+    <div>
+      <h1>Schedule Editor</h1>
+      <p>JEE Grind — daily study plan</p>
+    </div>
+    <div class="save-status">
+      <div class="save-dot" id="save-dot"></div>
+      <span id="save-label">not saved</span>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn accent" onclick="addSlot('class')">+ Session</button>
+    <button class="btn" onclick="addSlot('gap')">+ Break</button>
+    <button class="btn warn-btn" onclick="resetToDefault()">Reset</button>
+    <button class="btn export" onclick="toggleExport()">Export JSON ↓</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="th-time">Start</th>
+        <th class="th-time">End</th>
+        <th>Subject</th>
+        <th class="th-notes">Notes</th>
+        <th class="th-pill"></th>
+        <th class="th-del"></th>
+      </tr>
+    </thead>
+    <tbody id="slots"></tbody>
+  </table>
+
+  <div class="export-area" id="export-area">
+    <div class="export-header">
+      <span>schedule.json — paste into your file</span>
+      <button class="btn" onclick="copyJSON()">Copy</button>
+    </div>
+    <textarea id="json-out" readonly></textarea>
+  </div>
+
+  <p class="help">Drag ⠿ to reorder &nbsp;·&nbsp; Auto-saves to browser storage &nbsp;·&nbsp; Export JSON → paste into schedule.json</p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DEFAULT_SLOTS = [
+  {type:'class',subject:'Wake Up',start:'06:45',end:'07:00',room:''},
+  {type:'class',subject:'Revision',start:'07:00',end:'07:30',room:'Short notes'},
+  {type:'class',subject:'Maths — BITSAT Drill',start:'07:30',end:'09:30',room:'Timed MCQ sets'},
+  {type:'class',subject:'Physics — BITSAT Drill',start:'09:30',end:'11:00',room:'Single-correct, past papers'},
+  {type:'class',subject:'Chemistry — BITSAT Drill',start:'11:00',end:'12:30',room:'Rotate Org / Inorg / Physical'},
+  {type:'gap',subject:'Lunch',start:'12:30',end:'13:15',room:''},
+  {type:'class',subject:'JEE Advanced — Maths',start:'13:15',end:'15:00',room:'Multi-correct, integer type'},
+  {type:'class',subject:'BITS Crash Course',start:'15:00',end:'16:30',room:'Theory intake'},
+  {type:'gap',subject:'Break / Snack',start:'16:30',end:'17:00',room:''},
+  {type:'class',subject:'Maths — BITSAT Drill',start:'17:00',end:'18:30',room:''},
+  {type:'class',subject:'Physics — BITSAT Drill',start:'18:30',end:'19:30',room:''},
+  {type:'gap',subject:'Dinner',start:'19:30',end:'20:00',room:''},
+  {type:'class',subject:'BITS Crash Course',start:'20:00',end:'21:30',room:'Theory intake'},
+  {type:'class',subject:'JEE Advanced — Physics',start:'21:30',end:'23:00',room:'Paragraph, multi-correct'},
+  {type:'class',subject:'JEE Advanced — Chemistry',start:'23:00',end:'00:00',room:''},
+  {type:'class',subject:'Chemistry — BITSAT Drill',start:'00:00',end:'00:30',room:''},
+  {type:'class',subject:'Planning & Day Note',start:'00:30',end:'01:00',room:''}
+];
+
+const KEY = 'jee-schedule-v2';
+let slots = [], dragSrc = null, saveTimer = null;
+
+function load() {
+  try { const r = localStorage.getItem(KEY); if (r) { slots = JSON.parse(r); return; } } catch(e) {}
+  slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
+}
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(slots));
+  document.getElementById('save-dot').classList.add('saved');
+  document.getElementById('save-label').textContent = 'saved ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+}
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  document.getElementById('save-dot').classList.remove('saved');
+  document.getElementById('save-label').textContent = 'unsaved';
+  saveTimer = setTimeout(save, 600);
+}
+function resetToDefault() {
+  if (!confirm('Reset to default schedule?')) return;
+  slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
+  save(); render(); showToast('Reset to default');
+}
+
+function toMin(t) { const [h,m]=t.split(':').map(Number); return h*60+m; }
+function fmtTime(t) { let [h,m]=t.split(':').map(Number); return `${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`; }
+function dur(s,e) { let d=toMin(e)-toMin(s); return d<=0?d+1440:d; }
+function calcW(s,e) { const d=dur(s,e); return d<=15?60:d<=30?80:d<=60?100:d<=90?120:d<=120?140:160; }
+function fmtDur(m) { const h=Math.floor(m/60),mm=m%60; return !h?`${mm}m`:!mm?`${h}h`:`${h}h ${mm}m`; }
+
+function updateStats() {
+  const cls=slots.filter(s=>s.type==='class'), gaps=slots.filter(s=>s.type==='gap');
+  const sm=cls.reduce((a,s)=>a+dur(s.start,s.end),0), bm=gaps.reduce((a,s)=>a+dur(s.start,s.end),0);
+  document.getElementById('stats').innerHTML =
+    `<div class="stat"><span class="stat-val">${cls.length}</span><span class="stat-label">sessions</span></div>
+     <div class="stat"><span class="stat-val">${fmtDur(sm)}</span><span class="stat-label">study time</span></div>
+     <div class="stat"><span class="stat-val">${fmtDur(bm)}</span><span class="stat-label">breaks</span></div>`;
+}
+
+function render() {
+  const tbody = document.getElementById('slots');
+  tbody.innerHTML = '';
+  slots.forEach((s, i) => {
+    const tr = document.createElement('tr');
+    tr.className = s.type==='gap' ? 'gap-row' : '';
+    tr.draggable = true;
+    tr.addEventListener('dragstart', () => { dragSrc=i; tr.classList.add('dragging'); });
+    tr.addEventListener('dragend', () => { tr.classList.remove('dragging'); document.querySelectorAll('#slots tr').forEach(r=>r.classList.remove('drag-over')); });
+    tr.addEventListener('dragover', e => { e.preventDefault(); tr.classList.add('drag-over'); });
+    tr.addEventListener('dragleave', () => tr.classList.remove('drag-over'));
+    tr.addEventListener('drop', e => {
+      e.preventDefault(); tr.classList.remove('drag-over');
+      if(dragSrc===null||dragSrc===i) return;
+      const m=slots.splice(dragSrc,1)[0]; slots.splice(i,0,m); dragSrc=null;
+      scheduleSave(); render();
+    });
+
+    const mkInput = (type, val, placeholder, onChange) => {
+      const inp = document.createElement('input');
+      inp.type = type; inp.value = val; inp.placeholder = placeholder||'';
+      inp.addEventListener('input', onChange);
+      return inp;
+    };
+
+    const tdHandle = document.createElement('td');
+    tdHandle.innerHTML = '<span class="handle">⠿</span>';
+
+    const tdStart = document.createElement('td');
+    tdStart.appendChild(mkInput('time', s.start, '', ()=>{ slots[i].start=tdStart.querySelector('input').value; scheduleSave(); updateStats(); }));
+
+    const tdEnd = document.createElement('td');
+    tdEnd.appendChild(mkInput('time', s.end, '', ()=>{ slots[i].end=tdEnd.querySelector('input').value; scheduleSave(); updateStats(); }));
+
+    const tdSubj = document.createElement('td');
+    tdSubj.appendChild(mkInput('text', s.subject, s.type==='gap'?'Break label':'Subject', ()=>{ slots[i].subject=tdSubj.querySelector('input').value; scheduleSave(); }));
+
+    const tdNotes = document.createElement('td');
+    tdNotes.appendChild(mkInput('text', s.room||'', 'Notes', ()=>{ slots[i].room=tdNotes.querySelector('input').value; scheduleSave(); }));
+
+    const tdPill = document.createElement('td');
+    tdPill.style.textAlign = 'center';
+    const pill = document.createElement('span');
+    pill.className = 'type-pill ' + (s.type==='class'?'pill-class':'pill-gap');
+    pill.textContent = s.type==='class'?'study':'break';
+    tdPill.appendChild(pill);
+
+    const tdDel = document.createElement('td');
+    const del = document.createElement('button'); del.className='del-btn'; del.textContent='✕';
+    del.addEventListener('click', ()=>{ slots.splice(i,1); scheduleSave(); render(); });
+    tdDel.appendChild(del);
+
+    tr.append(tdHandle, tdStart, tdEnd, tdSubj, tdNotes, tdPill, tdDel);
+    tbody.appendChild(tr);
+  });
+  updateStats();
+}
+
+function addSlot(type) {
+  const last = slots[slots.length-1];
+  slots.push({type, subject:type==='gap'?'Break':'New session', start:last?last.end:'06:00', end:last?last.end:'06:30', room:''});
+  scheduleSave(); render();
+  setTimeout(()=>{ const ins=document.querySelectorAll('#slots td:nth-child(4) input'); ins[ins.length-1]?.focus(); ins[ins.length-1]?.select(); },50);
+}
+
+let exportOpen = false;
+function toggleExport() {
+  exportOpen = !exportOpen;
+  const area = document.getElementById('export-area');
+  if (exportOpen) { buildJSON(); area.classList.add('open'); area.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  else area.classList.remove('open');
+}
+function buildJSON() {
+  const lessons = slots.map(s => {
+    const w = calcW(s.start, s.end);
+    if (s.type==='gap') return {type:'gap',desc:s.subject,start_time:s.start,end_time:s.end,width:w};
+    return {type:'class',subject:s.subject,time:`${fmtTime(s.start)} - ${fmtTime(s.end)}`,room:s.room||'',start_time:s.start,end_time:s.end,width:w,is_compact:w<=80};
+  });
+  document.getElementById('json-out').value = JSON.stringify({header:'JEE Grind',link:'',lessons},null,2);
+}
+function copyJSON() {
+  buildJSON();
+  navigator.clipboard.writeText(document.getElementById('json-out').value)
+    .then(()=>showToast('Copied to clipboard'))
+    .catch(()=>showToast('Select all + copy manually'));
+}
+function showToast(msg) {
+  const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2200);
+}
+
+load(); render();
+document.getElementById('save-dot').classList.add('saved');
+document.getElementById('save-label').textContent = localStorage.getItem(KEY)?'loaded from storage':'defaults loaded';
+</script>
+</body>
+</html>
