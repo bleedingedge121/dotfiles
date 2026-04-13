@@ -91,7 +91,7 @@
             "workspaceZoom": 1.05
         },
         "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/wp8141094-black-red-aesthetic-wallpapers.png",
+        "wallpaperPath": "/home/nexus/Pictures/Wallpapers/thumb-1920-845041.jpg",
         "widgets": {
             "clock": {
                 "cookie": {
@@ -114,15 +114,15 @@
                     "font": {
                         "family": "Google Sans Flex",
                         "roundness": 0,
-                        "size": 89.50503651726845,
-                        "weight": 401.12406926895306,
-                        "width": 100
+                        "size": 99.21686973525873,
+                        "weight": 448.2057761732852,
+                        "width": 100.18990673886883
                     },
                     "showDate": true,
-                    "vertical": false
+                    "vertical": true
                 },
                 "enable": true,
-                "placementStrategy": "leastBusy",
+                "placementStrategy": "free",
                 "quote": {
                     "enable": false,
                     "text": "\"The reasonable man adapts himself to the world: \nthe unreasonable one persists in trying to adapt the world to himself. \nTherefore all progress depends on the unreasonable man\""
@@ -130,8 +130,8 @@
                 "showOnlyWhenLocked": false,
                 "style": "cookie",
                 "styleLocked": "cookie",
-                "x": 975,
-                "y": 365
+                "x": 50.62561274509801,
+                "y": 152.00061274509807
             },
             "weather": {
                 "enable": false,

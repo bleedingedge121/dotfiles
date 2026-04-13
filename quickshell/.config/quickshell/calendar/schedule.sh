@@ -1,35 +1,71 @@
 #!/usr/bin/env bash
 export TZ="Asia/Kolkata"
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JSON="$SCRIPT_DIR/schedule.json"
+
 TODAY=$(date +%Y-%m-%d)
 TOMORROW=$(date -d "tomorrow" +%Y-%m-%d)
 
 epoch() {
-    date -d "$1 $2" +%s
+    local time="$2"
+    # Times like 00:xx or 00:30 belong to tomorrow (past-midnight slots)
+    local hour="${time%%:*}"
+    if [ "$1" = "auto" ]; then
+        if [ "$hour" -lt 5 ]; then
+            date -d "$TOMORROW $time" +%s
+        else
+            date -d "$TODAY $time" +%s
+        fi
+    else
+        date -d "$1 $time" +%s
+    fi
 }
 
-cat << EOF
-{
-  "header": "JEE Grind",
-  "link": "",
-  "lessons": [
-    {"type":"class","subject":"Wake Up","time":"6:45 AM - 7:00 AM","room":"","start":$(epoch $TODAY "06:45"),"end":$(epoch $TODAY "07:00"),"width":60,"is_compact":true},
-    {"type":"class","subject":"Revision","time":"7:00 AM - 7:30 AM","room":"Short notes","start":$(epoch $TODAY "07:00"),"end":$(epoch $TODAY "07:30"),"width":100,"is_compact":false},
-    {"type":"class","subject":"Maths — BITSAT Drill","time":"7:30 AM - 9:30 AM","room":"Timed MCQ sets","start":$(epoch $TODAY "07:30"),"end":$(epoch $TODAY "09:30"),"width":160,"is_compact":false},
-    {"type":"class","subject":"Physics — BITSAT Drill","time":"9:30 AM - 11:00 AM","room":"Single-correct, past papers","start":$(epoch $TODAY "09:30"),"end":$(epoch $TODAY "11:00"),"width":140,"is_compact":false},
-    {"type":"class","subject":"Chemistry — BITSAT Drill","time":"11:00 AM - 12:30 PM","room":"Rotate Org / Inorg / Physical","start":$(epoch $TODAY "11:00"),"end":$(epoch $TODAY "12:30"),"width":140,"is_compact":false},
-    {"type":"gap","desc":"Lunch","start":$(epoch $TODAY "12:30"),"end":$(epoch $TODAY "13:15"),"width":60},
-    {"type":"class","subject":"JEE Advanced — Maths","time":"1:15 PM - 3:00 PM","room":"Multi-correct, integer type","start":$(epoch $TODAY "13:15"),"end":$(epoch $TODAY "15:00"),"width":160,"is_compact":false},
-    {"type":"class","subject":"BITS Crash Course","time":"3:00 PM - 4:30 PM","room":"Theory intake","start":$(epoch $TODAY "15:00"),"end":$(epoch $TODAY "16:30"),"width":160,"is_compact":false},
-    {"type":"gap","desc":"Break / Snack","start":$(epoch $TODAY "16:30"),"end":$(epoch $TODAY "17:00"),"width":60},
-    {"type":"class","subject":"Maths — BITSAT Drill","time":"5:00 PM - 6:30 PM","room":"","start":$(epoch $TODAY "17:00"),"end":$(epoch $TODAY "18:30"),"width":160,"is_compact":false},
-    {"type":"class","subject":"Physics — BITSAT Drill","time":"6:30 PM - 7:30 PM","room":"","start":$(epoch $TODAY "18:30"),"end":$(epoch $TODAY "19:30"),"width":140,"is_compact":false},
-    {"type":"gap","desc":"Dinner","start":$(epoch $TODAY "19:30"),"end":$(epoch $TODAY "20:00"),"width":60},
-    {"type":"class","subject":"BITS Crash Course","time":"8:00 PM - 9:30 PM","room":"Theory intake","start":$(epoch $TODAY "20:00"),"end":$(epoch $TODAY "21:30"),"width":160,"is_compact":false},
-    {"type":"class","subject":"JEE Advanced — Physics","time":"9:30 PM - 11:00 PM","room":"Paragraph, multi-correct","start":$(epoch $TODAY "21:30"),"end":$(epoch $TODAY "23:00"),"width":160,"is_compact":false},
-    {"type":"class","subject":"JEE Advanced — Chemistry","time":"11:00 PM - 12:00 AM","room":"","start":$(epoch $TODAY "23:00"),"end":$(epoch $TOMORROW "00:00"),"width":140,"is_compact":false},
-    {"type":"class","subject":"Chemistry — BITSAT Drill","time":"12:00 AM - 12:30 AM","room":"","start":$(epoch $TOMORROW "00:00"),"end":$(epoch $TOMORROW "00:30"),"width":100,"is_compact":true},
-    {"type":"class","subject":"Planning & Day Note","time":"12:30 AM - 1:00 AM","room":"","start":$(epoch $TOMORROW "00:30"),"end":$(epoch $TOMORROW "01:00"),"width":100,"is_compact":true}
-  ]
-}
-EOF
+# Read header from JSON
+HEADER=$(jq -r '.header' "$JSON")
+LINK=$(jq -r '.link' "$JSON")
+
+# Build lessons array with live epoch timestamps
+LESSONS=$(jq -c '.lessons[]' "$JSON" | while IFS= read -r lesson; do
+    type=$(echo "$lesson" | jq -r '.type')
+    start_time=$(echo "$lesson" | jq -r '.start_time')
+    end_time=$(echo "$lesson" | jq -r '.end_time')
+    width=$(echo "$lesson" | jq -r '.width')
+
+    start_epoch=$(epoch auto "$start_time")
+
+    # end_time: if it's earlier than start_time on the clock, it's tomorrow
+    start_min=$(echo "$start_time" | awk -F: '{print $1*60+$2}')
+    end_min=$(echo "$end_time"   | awk -F: '{print $1*60+$2}')
+    if [ "$end_min" -le "$start_min" ] && [ "$end_min" -lt 300 ]; then
+        end_epoch=$(date -d "$TOMORROW $end_time" +%s)
+    else
+        end_epoch=$(epoch auto "$end_time")
+    fi
+
+    if [ "$type" = "gap" ]; then
+        desc=$(echo "$lesson" | jq -r '.desc')
+        printf '{"type":"gap","desc":%s,"start":%d,"end":%d,"width":%d}\n' \
+            "$(echo "$desc" | jq -Rs '.')" "$start_epoch" "$end_epoch" "$width"
+    else
+        subject=$(echo "$lesson" | jq -r '.subject')
+        room=$(echo "$lesson"    | jq -r '.room')
+        time_str=$(echo "$lesson" | jq -r '.time')
+        is_compact=$(echo "$lesson" | jq -r '.is_compact')
+        printf '{"type":"class","subject":%s,"time":%s,"room":%s,"start":%d,"end":%d,"width":%d,"is_compact":%s}\n' \
+            "$(echo "$subject"  | jq -Rs '.')" \
+            "$(echo "$time_str" | jq -Rs '.')" \
+            "$(echo "$room"     | jq -Rs '.')" \
+            "$start_epoch" "$end_epoch" "$width" "$is_compact"
+    fi
+done)
+
+# Wrap into final JSON
+printf '{\n  "header": %s,\n  "link": %s,\n  "lessons": [\n' \
+    "$(echo "$HEADER" | jq -Rs '.')" \
+    "$(echo "$LINK"   | jq -Rs '.')"
+
+echo "$LESSONS" | awk 'NR>1{print "    " prev ","} {prev=$0} END{print "    " prev}'
+
+printf '  ]\n}\n'
