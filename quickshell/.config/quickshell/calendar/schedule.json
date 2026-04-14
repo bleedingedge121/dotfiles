@@ -1,5 +1,5 @@
 {
-  "header": "BITSAT Grind",
+  "header": "JEE Grind",
   "link": "",
   "lessons": [
     {
@@ -57,7 +57,7 @@
       "type": "class",
       "subject": "BITSAT Mock Test",
       "time": "2:00 PM - 5:15 PM",
-      "room": "",
+      "room": "Mathongo",
       "start_time": "14:00",
       "end_time": "17:15",
       "width": 160,

@@ -209,12 +209,33 @@ FloatingWindow {
     // -------------------------------------------------------------------------
     // SCHEDULE DATA
     // -------------------------------------------------------------------------
-    property var scheduleData: { "header": "Loading Schedule...", "link": "", "lessons": [] }
+    readonly property string scheduleCachePath: window.scriptsDir + "/schedule_cache.json"
 
+    property var scheduleData: { "header": "Loading...", "link": "", "lessons": [] }
+
+    // 1. Read cache immediately on startup — no blank flash
+    Process {
+        id: cachReader
+        command: ["cat", window.scheduleCachePath]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: {
+                let txt = this.text.trim();
+                if (txt !== "") {
+                    try { window.scheduleData = JSON.parse(txt); } catch(e) {}
+                }
+                // After cache is loaded, kick off a fresh fetch
+                schedulePoller.running = true;
+            }
+        }
+    }
+
+    // 2. Live fetch — writes output to cache then reloads it
     Process {
         id: schedulePoller
-        command: ["bash", window.scriptsDir + "/schedule.sh"]
-        running: true
+        command: ["bash", "-c",
+            "bash " + window.scriptsDir + "/schedule.sh | tee " + window.scheduleCachePath]
+        running: false
         stdout: StdioCollector {
             onStreamFinished: {
                 let txt = this.text.trim();
@@ -226,35 +247,48 @@ FloatingWindow {
     }
 
     Timer {
-        interval: 600000 
+        interval: 600000
         running: true; repeat: true
         onTriggered: schedulePoller.running = true
     }
 
     // Auto-scroll schedule to current active block
-    function scrollToCurrentBlock() {
-        if (!window.scheduleData || !window.scheduleData.lessons) return;
-        var lessons = window.scheduleData.lessons;
-        var now = window.currentEpoch;
-        var xPos = 0;
-        var scaleRatio = schedScroll.width / 750.0;
+    // Uses a short delay so scheduleRow has finished laying out before we read its width
+    Timer {
+        id: scrollDelayTimer
+        interval: 200
+        repeat: false
+        onTriggered: {
+            if (!window.scheduleData || !window.scheduleData.lessons) return;
+            var lessons = window.scheduleData.lessons;
+            var now = window.currentEpoch;
 
-        for (var i = 0; i < lessons.length; i++) {
-            var lesson = lessons[i];
-            var blockWidth = (lesson.width || 100) * scaleRatio;
-
-            // Check if this block is currently active
-            if (lesson.start && lesson.end && now >= lesson.start && now <= lesson.end) {
-                // Scroll so the active block is near the left with some padding
-                schedScroll.ScrollBar.horizontal.position = Math.max(0, (xPos - 40) / scheduleRow.width);
+            // If layout hasn't settled yet, retry
+            if (scheduleRow.width <= 0 || schedScroll.width <= 0) {
+                scrollDelayTimer.restart();
                 return;
             }
-            xPos += blockWidth;
+
+            var scale = schedScroll.width / 750.0;
+            var xPos = 0;
+
+            for (var i = 0; i < lessons.length; i++) {
+                var lesson = lessons[i];
+                var blockWidth = (lesson.width || 100) * scale;
+                if (lesson.start && lesson.end && now >= lesson.start && now <= lesson.end) {
+                    // contentItem.contentX is the most direct and reliable way —
+                    // avoids ScrollBar.position math which depends on scrollable range
+                    schedScroll.contentItem.contentX = Math.max(0, xPos - 40);
+                    return;
+                }
+                xPos += blockWidth;
+            }
         }
     }
 
-    // Scroll to current block when schedule loads or every minute
-    onScheduleDataChanged: Qt.callLater(scrollToCurrentBlock)
+    function scrollToCurrentBlock() { scrollDelayTimer.restart(); }
+
+    onScheduleDataChanged: scrollDelayTimer.restart()
 
     Timer {
         interval: 60000
