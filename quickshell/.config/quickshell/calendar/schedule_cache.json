@@ -2,140 +2,20 @@
   "header": "JEE Grind\n",
   "link": "\n",
   "lessons": [
-    {
-      "type": "gap",
-      "desc": "Wake Up\n",
-      "start": 1776133800,
-      "end": 1776135600,
-      "width": 80
-    },
-    {
-      "type": "class",
-      "subject": "Revision \n",
-      "time": "8:30 AM - 9:45 AM\n",
-      "room": "Short notes\n",
-      "start": 1776135600,
-      "end": 1776140100,
-      "width": 120,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Break Fast + Shower\n",
-      "start": 1776139200,
-      "end": 1776141000,
-      "width": 80
-    },
-    {
-      "type": "class",
-      "subject": "Physics Questions\n",
-      "time": "10:00 AM - 12:00 PM\n",
-      "room": "Drill\n",
-      "start": 1776141000,
-      "end": 1776148200,
-      "width": 140,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Maths Questions\n",
-      "time": "12:00 PM - 1:30 PM\n",
-      "room": "Drill/Neha ma'am\n",
-      "start": 1776148200,
-      "end": 1776153600,
-      "width": 120,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Lunch\n",
-      "start": 1776153600,
-      "end": 1776155400,
-      "width": 80
-    },
-    {
-      "type": "class",
-      "subject": "BITSAT Mock Test\n",
-      "time": "2:00 PM - 5:15 PM\n",
-      "room": "Mathongo\n",
-      "start": 1776155400,
-      "end": 1776167100,
-      "width": 160,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Break\n",
-      "start": 1776167100,
-      "end": 1776170700,
-      "width": 100
-    },
-    {
-      "type": "class",
-      "subject": "Chemistry Questions\n",
-      "time": "6:15 PM - 7:30 PM\n",
-      "room": "Drill/Vora\n",
-      "start": 1776170700,
-      "end": 1776175200,
-      "width": 120,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Dinner\n",
-      "start": 1776175200,
-      "end": 1776178800,
-      "width": 100
-    },
-    {
-      "type": "class",
-      "subject": "Test Analysis\n",
-      "time": "8:30 PM - 9:30 PM\n",
-      "room": "Fastly\n",
-      "start": 1776178800,
-      "end": 1776182400,
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Chemistry Questions\n",
-      "time": "9:30 PM - 10:30 PM\n",
-      "room": "Nothing else\n",
-      "start": 1776182400,
-      "end": 1776186000,
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Maths Questions\n",
-      "time": "10:30 PM - 11:30 PM\n",
-      "room": "\n",
-      "start": 1776186000,
-      "end": 1776189600,
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Physics Questions\n",
-      "time": "11:30 PM - 12:30 AM\n",
-      "room": "\n",
-      "start": 1776189600,
-      "end": 1776193200,
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Next Day Planning\n",
-      "time": "12:30 AM - 1:00 AM\n",
-      "room": "\n",
-      "start": 1776193200,
-      "end": 1776195000,
-      "width": 80,
-      "is_compact": true
-    }
+    {"type":"gap","desc":"Wake Up\n","start":1776133800,"end":1776135600,"width":80},
+    {"type":"class","subject":"Revision \n","time":"8:30 AM - 9:45 AM\n","room":"Short notes\n","start":1776135600,"end":1776140100,"width":120,"is_compact":false},
+    {"type":"gap","desc":"Break Fast + Shower\n","start":1776139200,"end":1776141000,"width":80},
+    {"type":"class","subject":"Physics Questions\n","time":"10:00 AM - 12:00 PM\n","room":"Drill\n","start":1776141000,"end":1776148200,"width":140,"is_compact":false},
+    {"type":"class","subject":"Maths Questions\n","time":"12:00 PM - 1:30 PM\n","room":"Drill/Neha ma'am\n","start":1776148200,"end":1776153600,"width":120,"is_compact":false},
+    {"type":"gap","desc":"Lunch\n","start":1776153600,"end":1776155400,"width":80},
+    {"type":"class","subject":"BITSAT Mock Test\n","time":"2:00 PM - 5:15 PM\n","room":"Mathongo\n","start":1776155400,"end":1776167100,"width":160,"is_compact":false},
+    {"type":"gap","desc":"Break\n","start":1776167100,"end":1776170700,"width":100},
+    {"type":"class","subject":"Chemistry Questions\n","time":"6:15 PM - 7:30 PM\n","room":"Drill/Vora\n","start":1776170700,"end":1776175200,"width":120,"is_compact":false},
+    {"type":"gap","desc":"Dinner\n","start":1776175200,"end":1776178800,"width":100},
+    {"type":"class","subject":"Test Analysis\n","time":"8:30 PM - 9:30 PM\n","room":"Fastly\n","start":1776178800,"end":1776182400,"width":100,"is_compact":false},
+    {"type":"class","subject":"Chemistry Questions\n","time":"9:30 PM - 10:30 PM\n","room":"Nothing else\n","start":1776182400,"end":1776186000,"width":100,"is_compact":false},
+    {"type":"class","subject":"Maths Questions\n","time":"10:30 PM - 11:30 PM\n","room":"\n","start":1776186000,"end":1776189600,"width":100,"is_compact":false},
+    {"type":"class","subject":"Physics Questions\n","time":"11:30 PM - 12:30 AM\n","room":"\n","start":1776189600,"end":1776193200,"width":100,"is_compact":false},
+    {"type":"class","subject":"Next Day Planning\n","time":"12:30 AM - 1:00 AM\n","room":"\n","start":1776193200,"end":1776195000,"width":80,"is_compact":true}
   ]
 }

@@ -35,3 +35,4 @@ if status is-interactive
         alias ssh 'kitten ssh'
     end
 end
+set -x POKEMON_ICAT_DATA /home/nexus/.local/share/pokemon-icat
