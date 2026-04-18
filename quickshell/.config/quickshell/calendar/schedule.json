@@ -1,5 +1,5 @@
 {
-  "header": "JEE Grind",
+  "header": "Grind",
   "link": "",
   "lessons": [
     {
@@ -11,9 +11,9 @@
     },
     {
       "type": "class",
-      "subject": "Revision ",
+      "subject": "LR Questions",
       "time": "8:30 AM - 9:45 AM",
-      "room": "Short notes",
+      "room": "Quizzer",
       "start_time": "08:30",
       "end_time": "09:45",
       "width": 120,
@@ -21,7 +21,7 @@
     },
     {
       "type": "gap",
-      "desc": "Break Fast + Shower",
+      "desc": "Break Fast + Showe",
       "start_time": "09:30",
       "end_time": "10:00",
       "width": 80
@@ -30,7 +30,7 @@
       "type": "class",
       "subject": "Physics Questions",
       "time": "10:00 AM - 12:00 PM",
-      "room": "Drill",
+      "room": "",
       "start_time": "10:00",
       "end_time": "12:00",
       "width": 140,
@@ -40,7 +40,7 @@
       "type": "class",
       "subject": "Maths Questions",
       "time": "12:00 PM - 1:30 PM",
-      "room": "Drill/Neha ma'am",
+      "room": "",
       "start_time": "12:00",
       "end_time": "13:30",
       "width": 120,
@@ -50,34 +50,44 @@
       "type": "gap",
       "desc": "Lunch",
       "start_time": "13:30",
-      "end_time": "14:00",
-      "width": 80
+      "end_time": "14:30",
+      "width": 100
     },
     {
       "type": "class",
-      "subject": "BITSAT Mock Test",
-      "time": "2:00 PM - 5:15 PM",
-      "room": "Mathongo",
-      "start_time": "14:00",
-      "end_time": "17:15",
-      "width": 160,
+      "subject": "Chem Questions",
+      "time": "2:30 PM - 4:30 PM",
+      "room": "",
+      "start_time": "14:30",
+      "end_time": "16:30",
+      "width": 140,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Theory ",
+      "time": "4:30 PM - 5:30 PM",
+      "room": "",
+      "start_time": "16:30",
+      "end_time": "17:30",
+      "width": 100,
       "is_compact": false
     },
     {
       "type": "gap",
       "desc": "Break",
-      "start_time": "17:15",
-      "end_time": "18:15",
+      "start_time": "17:30",
+      "end_time": "18:30",
       "width": 100
     },
     {
       "type": "class",
-      "subject": "Chemistry Questions",
-      "time": "6:15 PM - 7:30 PM",
-      "room": "Drill/Vora",
-      "start_time": "18:15",
+      "subject": "Theory",
+      "time": "6:30 PM - 7:30 PM",
+      "room": "",
+      "start_time": "18:30",
       "end_time": "19:30",
-      "width": 120,
+      "width": 100,
       "is_compact": false
     },
     {
@@ -89,53 +99,60 @@
     },
     {
       "type": "class",
-      "subject": "Test Analysis",
-      "time": "8:30 PM - 9:30 PM",
-      "room": "Fastly",
+      "subject": "Theory",
+      "time": "8:30 PM - 9:45 PM",
+      "room": "",
       "start_time": "20:30",
-      "end_time": "21:30",
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Chemistry Questions",
-      "time": "9:30 PM - 10:30 PM",
-      "room": "Nothing else",
-      "start_time": "21:30",
-      "end_time": "22:30",
-      "width": 100,
+      "end_time": "21:45",
+      "width": 120,
       "is_compact": false
     },
     {
       "type": "class",
       "subject": "Maths Questions",
-      "time": "10:30 PM - 11:30 PM",
+      "time": "9:45 PM - 10:45 PM",
       "room": "",
-      "start_time": "22:30",
-      "end_time": "23:30",
+      "start_time": "21:45",
+      "end_time": "22:45",
       "width": 100,
       "is_compact": false
     },
     {
       "type": "class",
-      "subject": "Physics Questions",
-      "time": "11:30 PM - 12:30 AM",
+      "subject": "Chem Questions/LR",
+      "time": "10:45 PM - 11:45 PM",
       "room": "",
-      "start_time": "23:30",
-      "end_time": "00:30",
+      "start_time": "22:45",
+      "end_time": "23:45",
       "width": 100,
       "is_compact": false
     },
     {
+      "type": "gap",
+      "desc": "Break",
+      "start_time": "23:45",
+      "end_time": "00:00",
+      "width": 60
+    },
+    {
       "type": "class",
-      "subject": "Next Day Planning",
-      "time": "12:30 AM - 1:00 AM",
+      "subject": "Physic Questions ",
+      "time": "12:00 AM - 1:00 AM",
       "room": "",
-      "start_time": "00:30",
+      "start_time": "00:00",
       "end_time": "01:00",
-      "width": 80,
-      "is_compact": true
+      "width": 100,
+      "is_compact": false
+    },
+    {
+      "type": "class",
+      "subject": "Planning next day",
+      "time": "1:00 AM - 1:15 AM",
+      "room": "",
+      "start_time": "01:00",
+      "end_time": "01:30",
+      "width": 100,
+      "is_compact": false
     }
   ]
 }

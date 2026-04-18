@@ -91,20 +91,20 @@
       "workspaceZoom": 1.05
     },
     "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/Ilya Kuvshinov.jpg",
+    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/monkey-d-luffy-red-5120x2880-24473.png",
     "widgets": {
       "clock": {
         "cookie": {
-          "aiStyling": false,
+          "aiStyling": true,
           "constantlyRotate": false,
           "dateInClock": true,
-          "dateStyle": "hide",
-          "dialNumberStyle": "none",
-          "hourHandStyle": "fill",
+          "dateStyle": "rect",
+          "dialNumberStyle": "full",
+          "hourHandStyle": "classic",
           "hourMarks": false,
-          "minuteHandStyle": "bold",
-          "secondHandStyle": "dot",
-          "sides": 6,
+          "minuteHandStyle": "classic",
+          "secondHandStyle": "classic",
+          "sides": 14,
           "timeIndicators": true,
           "useSineCookie": true
         },
@@ -122,16 +122,16 @@
           "vertical": false
         },
         "enable": true,
-        "placementStrategy": "free",
+        "placementStrategy": "leastBusy",
         "quote": {
-          "enable": false,
-          "text": "\"The reasonable man adapts himself to the world: \nthe unreasonable one persists in trying to adapt the world to himself. \nTherefore all progress depends on the unreasonable man\""
+          "enable": true,
+          "text": "Awareness of Ignorance\n Is Beginning Of Wisdom"
         },
         "showOnlyWhenLocked": false,
         "style": "digital",
-        "styleLocked": "digital",
-        "x": 744.4105392156864,
-        "y": 237.93995098039215
+        "styleLocked": "cookie",
+        "x": 78.43734681372553,
+        "y": 161.06096813725492
       },
       "weather": {
         "enable": false,
