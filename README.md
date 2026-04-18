@@ -12,7 +12,7 @@
 # My end-4 Dotfiles
 Hyprland + end-4 + fish + kitty on CachyOS
 
-## Contents
+# Contents
 - hypr — Hyprland config
 - quickshell — end-4 UI & Calender
 - fish — shell config
@@ -22,3 +22,12 @@ Hyprland + end-4 + fish + kitty on CachyOS
 - Custom calander/weather widget config and its scripts
 - Wallpapers
 - Back Up Scripts etc.
+- Custom launcher actions — place executable scripts here to auto-register as `/scriptname` commands
+- Daily study schedule workflow: integration with persistent cache
+- Background notification system for schedule updates
+- Additional Hyprland keybinds and personal workflow optimizations
+
+# Origins & Attribution
+If you want the original, unmodified setup
+This dotfiles repository is a **personal customization** of the excellent [end-4/dotfiles-hyprland](https://github.com/end-4/dots-hyprland) project,The end-4 **illogical-impulse**.
+Read their README for Hyprland, Quickshell, and AUR dependency setup
