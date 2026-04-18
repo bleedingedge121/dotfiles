@@ -3,7 +3,7 @@
     <h3></h3>
 </div>
 
-| AI, settings app | Some widgets |
+| Desktop | Some widgets |
 |:---|:---------------|
 | <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d4edaf69-6c97-4abd-9e3a-946e0f1e08c5"/> | <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f567b862-4e88-4112-928e-30d296fcabea" /> |
 | Fastfetch | Calender & Weather |
