@@ -7,7 +7,7 @@ Hyprland + end-4 + fish + kitty on CachyOS
 
 ## Contents
 - hypr — Hyprland config
-- quickshell — end-4 UI
+- quickshell — end-4 UI & Calender widget
 - fish — shell config
 - kitty — terminal
 - matugen — color theming
