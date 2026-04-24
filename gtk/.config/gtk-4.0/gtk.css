@@ -5,9 +5,9 @@
 
 @media (prefers-color-scheme: light) {
     /* Accents */
-    @define-color accent_color #6a5942;
+    @define-color accent_color #695a44;
     @define-color accent_fg_color #ffffff;
-    @define-color accent_bg_color #6a5942;
+    @define-color accent_bg_color #695a44;
     @define-color destructive_bg_color #ffdad6;
     @define-color destructive_fg_color #410002;
     @define-color destructive_color #ba1a1a;
@@ -15,7 +15,7 @@
     @define-color success_fg_color #213528;
     @define-color success_color #374B3E;
     /* Base surfaces */
-    @define-color window_bg_color #fff8f4;
+    @define-color window_bg_color #fef8f5;
     @define-color window_fg_color #1d1b19;
     @define-color headerbar_bg_color #f3ede9;
     @define-color headerbar_backdrop_color #f3ede9;
@@ -24,8 +24,8 @@
     @define-color card_fg_color #1d1b19;
     @define-color sidebar_bg_color #f3ede9;
     @define-color sidebar_fg_color #1d1b19;
-    @define-color secondary_sidebar_bg_color #f9f2ef;
-    @define-color secondary_sidebar_backdrop_color #f9f2ef;
+    @define-color secondary_sidebar_bg_color #f8f2ef;
+    @define-color secondary_sidebar_backdrop_color #f8f2ef;
     @define-color secondary_sidebar_fg_color #1d1b19;
     @define-color sidebar_border_color @sidebar_bg_color;
     @define-color sidebar_backdrop_color @sidebar_bg_color;
@@ -36,18 +36,18 @@
     /* Popups */
     @define-color popover_bg_color #e7e1de;
     @define-color popover_fg_color #1d1b19;
-    @define-color dialog_bg_color #ede7e3;
+    @define-color dialog_bg_color #ede7e4;
     @define-color dialog_fg_color #1d1b19;
-    @define-color thumbnail_bg_color #ede7e3;
+    @define-color thumbnail_bg_color #ede7e4;
     @define-color thumbnail_fg_color #1d1b19;
 }
 
 @media (prefers-color-scheme: dark) {
 
     /* Accents */
-    @define-color accent_color #dac3a6;
-    @define-color accent_fg_color #3c2e1a;
-    @define-color accent_bg_color #dac3a6;
+    @define-color accent_color #d8c3a9;
+    @define-color accent_fg_color #3b2e1c;
+    @define-color accent_bg_color #d8c3a9;
     @define-color destructive_bg_color #93000a;
     @define-color destructive_fg_color #ffdad6;
     @define-color destructive_color #ffb4ab;
@@ -69,15 +69,15 @@
     @define-color secondary_sidebar_fg_color #e7e1de;
     @define-color sidebar_border_color @sidebar_bg_color;
     @define-color sidebar_backdrop_color @sidebar_bg_color;
-    @define-color view_bg_color #100e0c;
+    @define-color view_bg_color #0f0e0c;
     @define-color view_fg_color #e7e1de;
-    @define-color overview_bg_color #100e0c;
+    @define-color overview_bg_color #0f0e0c;
     @define-color overview_fg_color #e7e1de;
     /* Popups */
     @define-color popover_bg_color #373432;
     @define-color popover_fg_color #e7e1de;
-    @define-color dialog_bg_color #2c2a27;
+    @define-color dialog_bg_color #2c2a28;
     @define-color dialog_fg_color #e7e1de;
-    @define-color thumbnail_bg_color #2c2a27;
+    @define-color thumbnail_bg_color #2c2a28;
     @define-color thumbnail_fg_color #e7e1de;
 }

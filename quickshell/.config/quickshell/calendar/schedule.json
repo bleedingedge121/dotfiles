@@ -21,7 +21,7 @@
     },
     {
       "type": "gap",
-      "desc": "Break Fast + Showe",
+      "desc": "Break Fast + Shower",
       "start_time": "09:30",
       "end_time": "10:00",
       "width": 80
@@ -119,7 +119,7 @@
     },
     {
       "type": "class",
-      "subject": "Chem Questions/LR",
+      "subject": "PCM/LR Questions ",
       "time": "10:45 PM - 11:45 PM",
       "room": "",
       "start_time": "22:45",

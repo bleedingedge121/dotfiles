@@ -1,0 +1,23 @@
+{
+  "header": "Grind\n",
+  "link": "\n",
+  "lessons": [
+    {"type":"gap","desc":"Wake Up\n","start":1776997800,"end":1776999600,"width":80},
+    {"type":"class","subject":"LR Questions\n","time":"8:30 AM - 9:45 AM\n","room":"Quizzer\n","start":1776999600,"end":1777004100,"width":120,"is_compact":false},
+    {"type":"gap","desc":"Break Fast + Shower\n","start":1777003200,"end":1777005000,"width":80},
+    {"type":"class","subject":"Physics Questions\n","time":"10:00 AM - 12:00 PM\n","room":"\n","start":1777005000,"end":1777012200,"width":140,"is_compact":false},
+    {"type":"class","subject":"Maths Questions\n","time":"12:00 PM - 1:30 PM\n","room":"\n","start":1777012200,"end":1777017600,"width":120,"is_compact":false},
+    {"type":"gap","desc":"Lunch\n","start":1777017600,"end":1777021200,"width":100},
+    {"type":"class","subject":"Chem Questions\n","time":"2:30 PM - 4:30 PM\n","room":"\n","start":1777021200,"end":1777028400,"width":140,"is_compact":false},
+    {"type":"class","subject":"Theory \n","time":"4:30 PM - 5:30 PM\n","room":"\n","start":1777028400,"end":1777032000,"width":100,"is_compact":false},
+    {"type":"gap","desc":"Break\n","start":1777032000,"end":1777035600,"width":100},
+    {"type":"class","subject":"Theory\n","time":"6:30 PM - 7:30 PM\n","room":"\n","start":1777035600,"end":1777039200,"width":100,"is_compact":false},
+    {"type":"gap","desc":"Dinner\n","start":1777039200,"end":1777042800,"width":100},
+    {"type":"class","subject":"Theory\n","time":"8:30 PM - 9:45 PM\n","room":"\n","start":1777042800,"end":1777047300,"width":120,"is_compact":false},
+    {"type":"class","subject":"Maths Questions\n","time":"9:45 PM - 10:45 PM\n","room":"\n","start":1777047300,"end":1777050900,"width":100,"is_compact":false},
+    {"type":"class","subject":"PCM/LR Questions \n","time":"10:45 PM - 11:45 PM\n","room":"\n","start":1777050900,"end":1777054500,"width":100,"is_compact":false},
+    {"type":"gap","desc":"Break\n","start":1777054500,"end":1777055400,"width":60},
+    {"type":"class","subject":"Physic Questions \n","time":"12:00 AM - 1:00 AM\n","room":"\n","start":1777055400,"end":1777059000,"width":100,"is_compact":false},
+    {"type":"class","subject":"Planning next day\n","time":"1:00 AM - 1:15 AM\n","room":"\n","start":1777059000,"end":1777060800,"width":100,"is_compact":false}
+  ]
+}
