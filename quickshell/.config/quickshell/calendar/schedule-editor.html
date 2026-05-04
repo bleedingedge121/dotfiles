@@ -1,635 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JEE Schedule Editor</title>
+  <title>BITSAT Schedule Editor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0a0f;
       --surface: #111118;
       --surface2: #18181f;
-      --border: rgba(255, 255, 255, 0.07);
-      --border2: rgba(255, 255, 255, 0.13);
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
       --text: #e8e8f0;
       --muted: #6b6b80;
       --accent: #7c6af7;
-      --accent-dim: rgba(124, 106, 247, 0.15);
-      --accent-border: rgba(124, 106, 247, 0.35);
+      --accent-dim: rgba(124,106,247,0.15);
+      --accent-border: rgba(124,106,247,0.35);
       --warn: #f0a045;
-      --warn-dim: rgba(240, 160, 69, 0.12);
-      --warn-border: rgba(240, 160, 69, 0.3);
+      --warn-dim: rgba(240,160,69,0.12);
+      --warn-border: rgba(240,160,69,0.3);
       --danger: #e05555;
-      --danger-dim: rgba(224, 85, 85, 0.1);
+      --danger-dim: rgba(224,85,85,0.1);
       --success: #4caf82;
-      --success-dim: rgba(76, 175, 130, 0.13);
-      --success-border: rgba(76, 175, 130, 0.3);
+      --success-dim: rgba(76,175,130,0.13);
+      --success-border: rgba(76,175,130,0.3);
+      --chem: #1D9E75;
+      --chem-dim: rgba(29,158,117,0.13);
+      --chem-border: rgba(29,158,117,0.3);
+      --physics: #378ADD;
+      --physics-dim: rgba(55,138,221,0.13);
+      --physics-border: rgba(55,138,221,0.3);
+      --lr: #BA7517;
+      --lr-dim: rgba(186,117,23,0.13);
+      --lr-border: rgba(186,117,23,0.3);
+      --rev: #D4537E;
+      --rev-dim: rgba(212,83,126,0.13);
+      --rev-border: rgba(212,83,126,0.3);
       --font-sans: 'Syne', sans-serif;
       --font-mono: 'DM Mono', monospace;
     }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-    }
-
-    body {
-      min-height: 100vh;
-    }
-
-    .shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
-    }
+    *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); color: var(--text); font-family: var(--font-sans); }
+    body { min-height: 100vh; }
+    .shell { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
 
     /* Header */
-    .header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      gap: 1rem;
-    }
+    .header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; gap: 1rem; }
+    .header-left { display: flex; align-items: flex-end; gap: 16px; }
+    .header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+    .header-badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: var(--accent-dim); border: 1px solid var(--accent-border); color: #a89eff; margin-bottom: 2px; }
+    .header p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 5px; }
+    .save-status { font-family: var(--font-mono); font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .save-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); transition: background 0.4s; }
+    .save-dot.saved { background: var(--success); }
 
-    .header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
+    /* Subject hour tracker */
+    .subject-tracker { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.25rem; }
+    .subj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+    .subj-card-top { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+    .subj-dot { width: 7px; height: 7px; border-radius: 2px; }
+    .subj-name { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+    .subj-val { font-family: var(--font-mono); font-size: 18px; font-weight: 500; }
+    .subj-bar-bg { height: 3px; background: var(--border2); border-radius: 2px; margin-top: 6px; }
+    .subj-bar-fill { height: 3px; border-radius: 2px; transition: width 0.3s; }
 
-    .header p {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 5px;
-    }
-
-    .save-status {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .save-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--muted);
-      transition: background 0.4s;
-    }
-
-    .save-dot.saved {
-      background: var(--success);
-    }
+    /* Split bar */
+    .split-bar-wrap { margin-bottom: 1.25rem; }
+    .split-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .split-bar { display: flex; border-radius: 99px; overflow: hidden; height: 6px; width: 100%; background: var(--border2); }
+    .split-seg { height: 6px; transition: width 0.3s; }
+    .split-legend { display: flex; gap: 16px; margin-top: 7px; flex-wrap: wrap; }
+    .split-leg { display: flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+    .split-dot { width: 7px; height: 7px; border-radius: 2px; }
 
     /* Toolbar */
-    .toolbar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .toolbar { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn { font-family: var(--font-sans); font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border2); background: var(--surface); color: var(--text); cursor: pointer; transition: background 0.15s, border-color 0.15s; white-space: nowrap; }
+    .btn:hover { background: var(--surface2); border-color: rgba(255,255,255,0.2); }
+    .btn.accent { background: var(--accent-dim); border-color: var(--accent-border); color: #a89eff; }
+    .btn.accent:hover { background: rgba(124,106,247,0.22); }
+    .btn.export { background: var(--success-dim); border-color: var(--success-border); color: var(--success); margin-left: auto; }
+    .btn.export:hover { background: rgba(76,175,130,0.2); }
+    .btn.warn-btn { background: var(--warn-dim); border-color: var(--warn-border); color: var(--warn); }
+    .tag-select { font-family: var(--font-mono); font-size: 11px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border2); background: var(--surface2); color: var(--muted); cursor: pointer; outline: none; }
+    .tag-select:focus { border-color: var(--accent-border); }
 
-    .btn {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 7px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--border2);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
-      white-space: nowrap;
-    }
+    /* Stats row */
+    .stats { display: flex; gap: 24px; margin-bottom: 1.25rem; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); flex-wrap: wrap; }
+    .stat { display: flex; gap: 7px; align-items: baseline; }
+    .stat-val { font-family: var(--font-mono); font-size: 13px; font-weight: 500; }
+    .stat-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 
-    .btn:hover {
-      background: var(--surface2);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
+    /* Table */
+    .schedule-table { width: 100%; border-collapse: separate; border-spacing: 0 4px; }
+    .schedule-table thead th { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; padding: 0 6px 6px; text-align: left; }
+    .schedule-table thead th:first-child { width: 28px; }
+    .th-time { width: 92px; }
+    .th-notes { width: 130px; }
+    .th-tag { width: 100px; }
+    .th-pill { width: 56px; text-align: center !important; }
+    .th-del { width: 36px; }
+    .schedule-table tbody tr { background: var(--surface); transition: opacity 0.15s; }
+    .schedule-table tbody tr.gap-row { background: transparent; }
+    .schedule-table tbody tr.dragging { opacity: 0.25; }
+    .schedule-table tbody tr.drag-over td { border-top: 2px solid var(--accent); }
+    .schedule-table tbody td { padding: 5px 6px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .schedule-table tbody td:first-child { border-left: 1px solid var(--border); border-radius: 7px 0 0 7px; padding-left: 10px; }
+    .schedule-table tbody td:last-child { border-right: 1px solid var(--border); border-radius: 0 7px 7px 0; padding-right: 8px; }
+    .schedule-table tbody tr.gap-row td { border-color: var(--border2); border-style: dashed; }
+    .schedule-table tbody tr:hover td { border-color: var(--border2); }
 
-    .btn.accent {
-      background: var(--accent-dim);
-      border-color: var(--accent-border);
-      color: #a89eff;
-    }
+    /* Row accent by tag */
+    .schedule-table tbody tr.tag-maths td:first-child { border-left: 3px solid var(--accent); }
+    .schedule-table tbody tr.tag-physics td:first-child { border-left: 3px solid var(--physics); }
+    .schedule-table tbody tr.tag-chem td:first-child { border-left: 3px solid var(--chem); }
+    .schedule-table tbody tr.tag-lr td:first-child { border-left: 3px solid var(--lr); }
+    .schedule-table tbody tr.tag-rev td:first-child { border-left: 3px solid var(--rev); }
 
-    .btn.accent:hover {
-      background: rgba(124, 106, 247, 0.22);
-    }
-
-    .btn.export {
-      background: var(--success-dim);
-      border-color: var(--success-border);
-      color: var(--success);
-      margin-left: auto;
-    }
-
-    .btn.export:hover {
-      background: rgba(76, 175, 130, 0.2);
-    }
-
-    .btn.warn-btn {
-      background: var(--warn-dim);
-      border-color: var(--warn-border);
-      color: var(--warn);
-    }
-
-    /* Stats */
-    .stats {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 1.25rem;
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      display: flex;
-      gap: 7px;
-      align-items: baseline;
-    }
-
-    .stat-val {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Table layout — fixed columns, no wrapping */
-    .schedule-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 4px;
-    }
-
-    .schedule-table thead th {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      padding: 0 6px 6px;
-      text-align: left;
-    }
-
-    .schedule-table thead th:first-child {
-      width: 28px;
-    }
-
-    .th-time {
-      width: 96px;
-    }
-
-    .th-notes {
-      width: 140px;
-    }
-
-    .th-pill {
-      width: 56px;
-      text-align: center !important;
-    }
-
-    .th-del {
-      width: 36px;
-    }
-
-    .schedule-table tbody tr {
-      background: var(--surface);
-      transition: opacity 0.15s;
-    }
-
-    .schedule-table tbody tr.gap-row {
-      background: transparent;
-    }
-
-    .schedule-table tbody tr.dragging {
-      opacity: 0.25;
-    }
-
-    .schedule-table tbody tr.drag-over td {
-      border-top: 2px solid var(--accent);
-    }
-
-    .schedule-table tbody td {
-      padding: 5px 6px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
-    .schedule-table tbody td:first-child {
-      border-left: 1px solid var(--border);
-      border-radius: 7px 0 0 7px;
-      padding-left: 10px;
-    }
-
-    .schedule-table tbody td:last-child {
-      border-right: 1px solid var(--border);
-      border-radius: 0 7px 7px 0;
-      padding-right: 8px;
-    }
-
-    .schedule-table tbody tr.gap-row td {
-      border-color: var(--border2);
-      border-style: dashed;
-    }
-
-    .schedule-table tbody tr:hover td {
-      border-color: var(--border2);
-    }
-
-    .handle {
-      cursor: grab;
-      color: var(--muted);
-      font-size: 14px;
-      user-select: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .handle:active {
-      cursor: grabbing;
-    }
+    .handle { cursor: grab; color: var(--muted); font-size: 14px; user-select: none; display: flex; align-items: center; }
+    .handle:active { cursor: grabbing; }
 
     .schedule-table input[type=time],
-    .schedule-table input[type=text] {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 5px 7px;
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      background: var(--surface2);
-      color: var(--text);
-      width: 100%;
-      outline: none;
-      transition: border-color 0.15s;
-    }
+    .schedule-table input[type=text] { font-family: var(--font-mono); font-size: 12px; padding: 5px 7px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface2); color: var(--text); width: 100%; outline: none; transition: border-color 0.15s; }
+    .schedule-table input[type=text] { font-family: var(--font-sans); font-size: 13px; }
+    .schedule-table input:focus { border-color: var(--accent-border); }
 
-    .schedule-table input[type=text] {
-      font-family: var(--font-sans);
-      font-size: 13px;
-    }
+    .type-pill { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 7px; border-radius: 4px; font-weight: 500; white-space: nowrap; display: inline-block; }
+    .pill-class { background: var(--accent-dim); color: #a89eff; border: 1px solid var(--accent-border); }
+    .pill-gap { background: var(--warn-dim); color: var(--warn); border: 1px solid var(--warn-border); }
 
-    .schedule-table input:focus {
-      border-color: var(--accent-border);
-    }
+    .del-btn { width: 28px; height: 28px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; transition: color 0.15s, border-color 0.15s, background 0.15s; }
+    .del-btn:hover { color: var(--danger); border-color: rgba(224,85,85,0.3); background: var(--danger-dim); }
 
-    .type-pill {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 3px 7px;
-      border-radius: 4px;
-      font-weight: 500;
-      white-space: nowrap;
-      display: inline-block;
-    }
+    /* Tag dropdown in table */
+    .tag-sel { font-family: var(--font-mono); font-size: 10px; padding: 4px 6px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface2); color: var(--muted); outline: none; width: 100%; cursor: pointer; }
+    .tag-sel:focus { border-color: var(--accent-border); }
+    .tag-sel.t-maths { color: #a89eff; border-color: var(--accent-border); background: var(--accent-dim); }
+    .tag-sel.t-physics { color: #7ab8f5; border-color: var(--physics-border); background: var(--physics-dim); }
+    .tag-sel.t-chem { color: #4cbb95; border-color: var(--chem-border); background: var(--chem-dim); }
+    .tag-sel.t-lr { color: #d9a050; border-color: var(--lr-border); background: var(--lr-dim); }
+    .tag-sel.t-rev { color: #e07aa0; border-color: var(--rev-border); background: var(--rev-dim); }
+    .tag-sel.t-break { color: var(--warn); border-color: var(--warn-border); background: var(--warn-dim); }
 
-    .pill-class {
-      background: var(--accent-dim);
-      color: #a89eff;
-      border: 1px solid var(--accent-border);
-    }
-
-    .pill-gap {
-      background: var(--warn-dim);
-      color: var(--warn);
-      border: 1px solid var(--warn-border);
-    }
-
-    .del-btn {
-      width: 28px;
-      height: 28px;
-      border: 1px solid transparent;
-      border-radius: 5px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-    }
-
-    .del-btn:hover {
-      color: var(--danger);
-      border-color: rgba(224, 85, 85, 0.3);
-      background: var(--danger-dim);
-    }
+    /* Duration badge */
+    .dur-badge { font-family: var(--font-mono); font-size: 10px; color: var(--muted); white-space: nowrap; }
 
     /* Export */
-    .export-area {
-      display: none;
-      margin-top: 1.25rem;
-    }
-
-    .export-area.open {
-      display: block;
-    }
-
-    .export-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .export-header span {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .export-area textarea {
-      width: 100%;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      line-height: 1.6;
-      padding: 12px;
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      background: var(--surface2);
-      color: var(--text);
-      resize: vertical;
-      min-height: 200px;
-      outline: none;
-    }
+    .export-area { display: none; margin-top: 1.25rem; }
+    .export-area.open { display: block; }
+    .export-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .export-header span { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+    .export-area textarea { width: 100%; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; padding: 12px; border: 1px solid var(--border2); border-radius: 8px; background: var(--surface2); color: var(--text); resize: vertical; min-height: 200px; outline: none; }
 
     /* Toast */
-    .toast {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      background: var(--surface2);
-      border: 1px solid var(--success-border);
-      color: var(--success);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 9px 16px;
-      border-radius: 7px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.22s, transform 0.22s;
-      pointer-events: none;
-      z-index: 100;
-    }
+    .toast { position: fixed; bottom: 22px; right: 22px; background: var(--surface2); border: 1px solid var(--success-border); color: var(--success); font-family: var(--font-mono); font-size: 12px; padding: 9px 16px; border-radius: 7px; opacity: 0; transform: translateY(6px); transition: opacity 0.22s, transform 0.22s; pointer-events: none; z-index: 100; }
+    .toast.show { opacity: 1; transform: translateY(0); }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .help {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 1rem;
-      line-height: 2;
-    }
+    .help { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 1rem; line-height: 2; }
+    .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
   </style>
 </head>
-
 <body>
-  <div class="shell">
+<div class="shell">
 
-    <div class="header">
+  <div class="header">
+    <div class="header-left">
       <div>
         <h1>Schedule Editor</h1>
-        <p>JEE Grind — daily study plan</p>
+        <p>BITSAT Grind — 20-day countdown plan</p>
       </div>
-      <div class="save-status">
-        <div class="save-dot" id="save-dot"></div>
-        <span id="save-label">not saved</span>
-      </div>
+      <div class="header-badge">BITSAT 2025</div>
     </div>
-
-    <div class="toolbar">
-      <button class="btn accent" onclick="addSlot('class')">+ Session</button>
-      <button class="btn" onclick="addSlot('gap')">+ Break</button>
-      <button class="btn warn-btn" onclick="resetToDefault()">Reset</button>
-      <button class="btn export" onclick="toggleExport()">Export JSON ↓</button>
+    <div class="save-status">
+      <div class="save-dot" id="save-dot"></div>
+      <span id="save-label">not saved</span>
     </div>
-
-    <div class="stats" id="stats"></div>
-
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th class="th-time">Start</th>
-          <th class="th-time">End</th>
-          <th>Subject</th>
-          <th class="th-notes">Notes</th>
-          <th class="th-pill"></th>
-          <th class="th-del"></th>
-        </tr>
-      </thead>
-      <tbody id="slots"></tbody>
-    </table>
-
-    <div class="export-area" id="export-area">
-      <div class="export-header">
-        <span>schedule.json — paste into your file</span>
-        <button class="btn" onclick="copyJSON()">Copy</button>
-      </div>
-      <textarea id="json-out" readonly></textarea>
-    </div>
-
-    <p class="help">Drag ⠿ to reorder &nbsp;·&nbsp; Auto-saves to browser storage &nbsp;·&nbsp; Export JSON → paste into
-      schedule.json</p>
   </div>
-  <div class="toast" id="toast"></div>
 
-  <script>
-    const DEFAULT_SLOTS = [
-      { type: 'class', subject: 'Wake Up', start: '06:45', end: '07:00', room: '' },
-      { type: 'class', subject: 'Revision', start: '07:00', end: '07:30', room: 'Short notes' },
-      { type: 'class', subject: 'Maths — BITSAT Drill', start: '07:30', end: '09:30', room: 'Timed MCQ sets' },
-      { type: 'class', subject: 'Physics — BITSAT Drill', start: '09:30', end: '11:00', room: 'Single-correct, past papers' },
-      { type: 'class', subject: 'Chemistry — BITSAT Drill', start: '11:00', end: '12:30', room: 'Rotate Org / Inorg / Physical' },
-      { type: 'gap', subject: 'Lunch', start: '12:30', end: '13:15', room: '' },
-      { type: 'class', subject: 'JEE Advanced — Maths', start: '13:15', end: '15:00', room: 'Multi-correct, integer type' },
-      { type: 'class', subject: 'BITS Crash Course', start: '15:00', end: '16:30', room: 'Theory intake' },
-      { type: 'gap', subject: 'Break / Snack', start: '16:30', end: '17:00', room: '' },
-      { type: 'class', subject: 'Maths — BITSAT Drill', start: '17:00', end: '18:30', room: '' },
-      { type: 'class', subject: 'Physics — BITSAT Drill', start: '18:30', end: '19:30', room: '' },
-      { type: 'gap', subject: 'Dinner', start: '19:30', end: '20:00', room: '' },
-      { type: 'class', subject: 'BITS Crash Course', start: '20:00', end: '21:30', room: 'Theory intake' },
-      { type: 'class', subject: 'JEE Advanced — Physics', start: '21:30', end: '23:00', room: 'Paragraph, multi-correct' },
-      { type: 'class', subject: 'JEE Advanced — Chemistry', start: '23:00', end: '00:00', room: '' },
-      { type: 'class', subject: 'Chemistry — BITSAT Drill', start: '00:00', end: '00:30', room: '' },
-      { type: 'class', subject: 'Planning & Day Note', start: '00:30', end: '01:00', room: '' }
-    ];
+  <!-- Subject hour tracker -->
+  <div class="subject-tracker" id="subj-tracker"></div>
 
-    const KEY = 'jee-schedule-v2';
-    let slots = [], dragSrc = null, saveTimer = null;
+  <!-- Q vs Theory split bar -->
+  <div class="split-bar-wrap">
+    <div class="split-label">
+      <span>session type split</span>
+      <span id="split-pct-label"></span>
+    </div>
+    <div class="split-bar" id="split-bar">
+      <div class="split-seg" id="seg-q" style="background:#534AB7;"></div>
+      <div class="split-seg" id="seg-t" style="background:#1D9E75;"></div>
+      <div class="split-seg" id="seg-b" style="background:#f0a045;"></div>
+    </div>
+    <div class="split-legend">
+      <div class="split-leg"><div class="split-dot" style="background:#534AB7"></div><span id="leg-q">Questions</span></div>
+      <div class="split-leg"><div class="split-dot" style="background:#1D9E75"></div><span id="leg-t">Theory</span></div>
+      <div class="split-leg"><div class="split-dot" style="background:#D4537E"></div><span id="leg-r">Revision</span></div>
+      <div class="split-leg"><div class="split-dot" style="background:#f0a045"></div><span id="leg-b">Breaks</span></div>
+    </div>
+  </div>
 
-    function load() {
-      try { const r = localStorage.getItem(KEY); if (r) { slots = JSON.parse(r); return; } } catch (e) { }
-      slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
-    }
-    function save() {
-      localStorage.setItem(KEY, JSON.stringify(slots));
-      document.getElementById('save-dot').classList.add('saved');
-      document.getElementById('save-label').textContent = 'saved ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }
-    function scheduleSave() {
-      clearTimeout(saveTimer);
-      document.getElementById('save-dot').classList.remove('saved');
-      document.getElementById('save-label').textContent = 'unsaved';
-      saveTimer = setTimeout(save, 600);
-    }
-    function resetToDefault() {
-      if (!confirm('Reset to default schedule?')) return;
-      slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
-      save(); render(); showToast('Reset to default');
-    }
+  <!-- Stats -->
+  <div class="stats" id="stats"></div>
 
-    function toMin(t) { const [h, m] = t.split(':').map(Number); return h * 60 + m; }
-    function fmtTime(t) { let [h, m] = t.split(':').map(Number); return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`; }
-    function dur(s, e) { let d = toMin(e) - toMin(s); return d <= 0 ? d + 1440 : d; }
-    function calcW(s, e) { const d = dur(s, e); return d <= 15 ? 60 : d <= 30 ? 80 : d <= 60 ? 100 : d <= 90 ? 120 : d <= 120 ? 140 : 160; }
-    function fmtDur(m) { const h = Math.floor(m / 60), mm = m % 60; return !h ? `${mm}m` : !mm ? `${h}h` : `${h}h ${mm}m`; }
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn accent" onclick="addSlot('class')">+ Session</button>
+    <button class="btn" onclick="addSlot('gap')">+ Break</button>
+    <button class="btn warn-btn" onclick="resetToDefault()">Reset to BITSAT default</button>
+    <button class="btn export" onclick="toggleExport()">Export JSON ↓</button>
+  </div>
 
-    function updateStats() {
-      const cls = slots.filter(s => s.type === 'class'), gaps = slots.filter(s => s.type === 'gap');
-      const sm = cls.reduce((a, s) => a + dur(s.start, s.end), 0), bm = gaps.reduce((a, s) => a + dur(s.start, s.end), 0);
-      document.getElementById('stats').innerHTML =
-        `<div class="stat"><span class="stat-val">${cls.length}</span><span class="stat-label">sessions</span></div>
-     <div class="stat"><span class="stat-val">${fmtDur(sm)}</span><span class="stat-label">study time</span></div>
-     <div class="stat"><span class="stat-val">${fmtDur(bm)}</span><span class="stat-label">breaks</span></div>`;
-    }
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="th-time">Start</th>
+        <th class="th-time">End</th>
+        <th class="th-time" style="width:52px;">Dur</th>
+        <th>Subject</th>
+        <th class="th-notes">Notes</th>
+        <th class="th-tag">Tag</th>
+        <th class="th-pill"></th>
+        <th class="th-del"></th>
+      </tr>
+    </thead>
+    <tbody id="slots"></tbody>
+  </table>
 
-    function render() {
-      const tbody = document.getElementById('slots');
-      tbody.innerHTML = '';
-      slots.forEach((s, i) => {
-        const tr = document.createElement('tr');
-        tr.className = s.type === 'gap' ? 'gap-row' : '';
-        tr.draggable = true;
-        tr.addEventListener('dragstart', () => { dragSrc = i; tr.classList.add('dragging'); });
-        tr.addEventListener('dragend', () => { tr.classList.remove('dragging'); document.querySelectorAll('#slots tr').forEach(r => r.classList.remove('drag-over')); });
-        tr.addEventListener('dragover', e => { e.preventDefault(); tr.classList.add('drag-over'); });
-        tr.addEventListener('dragleave', () => tr.classList.remove('drag-over'));
-        tr.addEventListener('drop', e => {
-          e.preventDefault(); tr.classList.remove('drag-over');
-          if (dragSrc === null || dragSrc === i) return;
-          const m = slots.splice(dragSrc, 1)[0]; slots.splice(i, 0, m); dragSrc = null;
-          scheduleSave(); render();
-        });
+  <div class="export-area" id="export-area">
+    <div class="export-header">
+      <span>schedule.json — paste into your file</span>
+      <button class="btn" onclick="copyJSON()">Copy</button>
+    </div>
+    <textarea id="json-out" readonly></textarea>
+  </div>
 
-        const mkInput = (type, val, placeholder, onChange) => {
-          const inp = document.createElement('input');
-          inp.type = type; inp.value = val; inp.placeholder = placeholder || '';
-          inp.addEventListener('input', onChange);
-          return inp;
-        };
+  <p class="help">Drag ⠿ to reorder &nbsp;·&nbsp; Auto-saves to browser &nbsp;·&nbsp; Tag each session for subject tracking &nbsp;·&nbsp; Export JSON → paste into schedule.json</p>
+</div>
+<div class="toast" id="toast"></div>
 
-        const tdHandle = document.createElement('td');
-        tdHandle.innerHTML = '<span class="handle">⠿</span>';
+<script>
+  const DEFAULT_SLOTS = [
+    { type:'gap',   subject:'Wake Up + Review Plan',    start:'08:00', end:'08:30', room:'Check yesterday\'s errors', tag:'break' },
+    { type:'class', subject:'Maths — Questions',         start:'08:30', end:'10:00', room:'PYQ + BITSAT mock sets', tag:'maths' },
+    { type:'class', subject:'Chemistry Theory — Slot A', start:'10:00', end:'11:30', room:'Physical / Inorganic / Organic (rotate)', tag:'chem' },
+    { type:'class', subject:'Chemistry — Questions',     start:'11:30', end:'12:30', room:'Slot A topic (same as theory above)', tag:'chem' },
+    { type:'class', subject:'Maths — Theory',            start:'12:30', end:'13:00', room:'BITSAT-only topics + concept gaps', tag:'maths' },
+    { type:'gap',   subject:'Lunch',                     start:'13:00', end:'13:30', room:'', tag:'break' },
+    { type:'class', subject:'Maths — Theory continued',  start:'13:30', end:'14:30', room:'BITSAT-only topics', tag:'maths' },
+    { type:'class', subject:'Physics — Theory',          start:'14:30', end:'16:00', room:'BITSAT-only topics', tag:'physics' },
+    { type:'class', subject:'Chemistry Theory — Slot B', start:'16:00', end:'17:30', room:'Second branch of the day (rotate)', tag:'chem' },
+    { type:'class', subject:'Maths — Speed Drills',      start:'17:30', end:'18:00', room:'Accuracy + timed MCQ sets', tag:'maths' },
+    { type:'gap',   subject:'Evening Break',             start:'18:00', end:'18:30', room:'Walk, no screens', tag:'break' },
+    { type:'class', subject:'LR — English + Reasoning',  start:'18:30', end:'20:00', room:'BITSAT-specific patterns', tag:'lr' },
+    { type:'gap',   subject:'Dinner',                    start:'20:00', end:'20:30', room:'', tag:'break' },
+    { type:'class', subject:'Physics — Questions',       start:'20:30', end:'22:00', room:'Chapter-wise + accuracy sets', tag:'physics' },
+    { type:'class', subject:'Chemistry — Questions',     start:'22:00', end:'23:00', room:'Slot B topic (same as evening theory)', tag:'chem' },
+    { type:'class', subject:'Maths — Hard Problems',     start:'23:00', end:'00:30', room:'Mock section + integer type', tag:'maths' },
+    { type:'class', subject:'Physics — Theory',          start:'00:30', end:'01:30', room:'Concept consolidation', tag:'physics' },
+    { type:'class', subject:'Revision — Error Review',   start:'01:30', end:'02:00', room:'Today\'s mistakes across all subjects', tag:'rev' },
+    { type:'class', subject:'Planning Next Day',         start:'02:00', end:'02:30', room:'Log errors, set tomorrow\'s topic slots', tag:'rev' },
+  ];
 
-        const tdStart = document.createElement('td');
-        tdStart.appendChild(mkInput('time', s.start, '', () => { slots[i].start = tdStart.querySelector('input').value; scheduleSave(); updateStats(); }));
+  const SUBJ_CONFIG = {
+    maths:   { label:'Maths',   color:'#7c6af7', max: 5*60  },
+    physics: { label:'Physics', color:'#378ADD', max: 4*60  },
+    chem:    { label:'Chem',    color:'#1D9E75', max: 4.5*60 },
+    lr:      { label:'LR',      color:'#BA7517', max: 1.5*60 },
+    rev:     { label:'Rev+Plan',color:'#D4537E', max: 1*60  },
+  };
 
-        const tdEnd = document.createElement('td');
-        tdEnd.appendChild(mkInput('time', s.end, '', () => { slots[i].end = tdEnd.querySelector('input').value; scheduleSave(); updateStats(); }));
+  const KEY = 'bitsat-schedule-v1';
+  let slots = [], dragSrc = null, saveTimer = null;
 
-        const tdSubj = document.createElement('td');
-        tdSubj.appendChild(mkInput('text', s.subject, s.type === 'gap' ? 'Break label' : 'Subject', () => { slots[i].subject = tdSubj.querySelector('input').value; scheduleSave(); }));
-
-        const tdNotes = document.createElement('td');
-        tdNotes.appendChild(mkInput('text', s.room || '', 'Notes', () => { slots[i].room = tdNotes.querySelector('input').value; scheduleSave(); }));
-
-        const tdPill = document.createElement('td');
-        tdPill.style.textAlign = 'center';
-        const pill = document.createElement('span');
-        pill.className = 'type-pill ' + (s.type === 'class' ? 'pill-class' : 'pill-gap');
-        pill.textContent = s.type === 'class' ? 'study' : 'break';
-        tdPill.appendChild(pill);
-
-        const tdDel = document.createElement('td');
-        const del = document.createElement('button'); del.className = 'del-btn'; del.textContent = '✕';
-        del.addEventListener('click', () => { slots.splice(i, 1); scheduleSave(); render(); });
-        tdDel.appendChild(del);
-
-        tr.append(tdHandle, tdStart, tdEnd, tdSubj, tdNotes, tdPill, tdDel);
-        tbody.appendChild(tr);
-      });
-      updateStats();
-    }
-
-    function addSlot(type) {
-      const last = slots[slots.length - 1];
-      slots.push({ type, subject: type === 'gap' ? 'Break' : 'New session', start: last ? last.end : '06:00', end: last ? last.end : '06:30', room: '' });
-      scheduleSave(); render();
-      setTimeout(() => { const ins = document.querySelectorAll('#slots td:nth-child(4) input'); ins[ins.length - 1]?.focus(); ins[ins.length - 1]?.select(); }, 50);
-    }
-
-    let exportOpen = false;
-    function toggleExport() {
-      exportOpen = !exportOpen;
-      const area = document.getElementById('export-area');
-      if (exportOpen) { buildJSON(); area.classList.add('open'); area.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-      else area.classList.remove('open');
-    }
-    function buildJSON() {
-      const lessons = slots.map(s => {
-        const w = calcW(s.start, s.end);
-        if (s.type === 'gap') return { type: 'gap', desc: s.subject, start_time: s.start, end_time: s.end, width: w };
-        return { type: 'class', subject: s.subject, time: `${fmtTime(s.start)} - ${fmtTime(s.end)}`, room: s.room || '', start_time: s.start, end_time: s.end, width: w, is_compact: w <= 80 };
-      });
-      document.getElementById('json-out').value = JSON.stringify({ header: 'Grind', link: '', lessons }, null, 2);
-    }
-    function copyJSON() {
-      buildJSON();
-      navigator.clipboard.writeText(document.getElementById('json-out').value)
-        .then(() => showToast('Copied to clipboard'))
-        .catch(() => showToast('Select all + copy manually'));
-    }
-    function showToast(msg) {
-      const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show');
-      setTimeout(() => el.classList.remove('show'), 2200);
-    }
-
-    load(); render();
+  function load() {
+    try { const r = localStorage.getItem(KEY); if (r) { slots = JSON.parse(r); return; } } catch(e){}
+    slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
+  }
+  function save() {
+    localStorage.setItem(KEY, JSON.stringify(slots));
     document.getElementById('save-dot').classList.add('saved');
-    document.getElementById('save-label').textContent = localStorage.getItem(KEY) ? 'loaded from storage' : 'defaults loaded';
-  </script>
-</body>
+    document.getElementById('save-label').textContent = 'saved ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  }
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    document.getElementById('save-dot').classList.remove('saved');
+    document.getElementById('save-label').textContent = 'unsaved';
+    saveTimer = setTimeout(save, 600);
+  }
+  function resetToDefault() {
+    if (!confirm('Reset to default BITSAT schedule?')) return;
+    slots = JSON.parse(JSON.stringify(DEFAULT_SLOTS));
+    save(); render(); showToast('Reset to BITSAT default');
+  }
 
+  function toMin(t) {
+    if (!t) return 0;
+    const [h,m] = t.split(':').map(Number);
+    return h * 60 + m;
+  }
+  function fmtTime(t) {
+    if (!t) return '';
+    let [h,m] = t.split(':').map(Number);
+    return `${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`;
+  }
+  function dur(s,e) {
+    let d = toMin(e) - toMin(s);
+    return d <= 0 ? d + 1440 : d;
+  }
+  function fmtDur(m) {
+    const h = Math.floor(m/60), mm = m%60;
+    return !h ? `${mm}m` : !mm ? `${h}h` : `${h}h ${mm}m`;
+  }
+  function calcW(s,e) {
+    const d = dur(s,e);
+    return d<=15?60:d<=30?80:d<=60?100:d<=90?120:d<=120?140:160;
+  }
+
+  function getSubjectMins() {
+    const totals = { maths:0, physics:0, chem:0, lr:0, rev:0 };
+    slots.forEach(s => {
+      if (s.type === 'class' && totals[s.tag] !== undefined) {
+        totals[s.tag] += dur(s.start, s.end);
+      }
+    });
+    return totals;
+  }
+
+  function getTypeMins() {
+    const q = ['maths','physics','chem','lr'];
+    let questions=0, theory=0, revision=0, breaks=0;
+    slots.forEach(s => {
+      const d = dur(s.start, s.end);
+      if (s.type === 'gap' || s.tag === 'break') { breaks += d; return; }
+      if (s.tag === 'rev') { revision += d; return; }
+      const n = (s.subject || '').toLowerCase();
+      const r = (s.room || '').toLowerCase();
+      if (n.includes('question') || n.includes('drill') || n.includes('mock') || r.includes('question')) questions += d;
+      else if (n.includes('theory') || n.includes('concept') || r.includes('theory') || r.includes('intake')) theory += d;
+      else questions += d;
+    });
+    return { questions, theory, revision, breaks };
+  }
+
+  function updateSubjectTracker() {
+    const totals = getSubjectMins();
+    const cfg = SUBJ_CONFIG;
+    let html = '';
+    Object.keys(cfg).forEach(k => {
+      const c = cfg[k];
+      const m = totals[k] || 0;
+      const pct = Math.min(100, Math.round(m / c.max * 100));
+      html += `<div class="subj-card">
+        <div class="subj-card-top">
+          <div class="subj-dot" style="background:${c.color}"></div>
+          <span class="subj-name">${c.label}</span>
+        </div>
+        <div class="subj-val" style="color:${c.color}">${fmtDur(m)}</div>
+        <div class="subj-bar-bg"><div class="subj-bar-fill" style="background:${c.color};width:${pct}%"></div></div>
+      </div>`;
+    });
+    document.getElementById('subj-tracker').innerHTML = html;
+  }
+
+  function updateSplitBar() {
+    const t = getTypeMins();
+    const total = t.questions + t.theory + t.revision + t.breaks;
+    if (!total) return;
+    const pq = Math.round(t.questions/total*100);
+    const pt = Math.round(t.theory/total*100);
+    const pr = Math.round(t.revision/total*100);
+    const pb = 100 - pq - pt - pr;
+    document.getElementById('seg-q').style.width = pq+'%';
+    document.getElementById('seg-t').style.width = pt+'%';
+    document.getElementById('seg-b').style.width = pb+'%';
+    // revision injected between t and b
+    document.getElementById('seg-q').style.background = '#534AB7';
+
+    document.getElementById('leg-q').textContent = `Questions — ${pq}%`;
+    document.getElementById('leg-t').textContent = `Theory — ${pt}%`;
+    document.getElementById('leg-r').textContent = `Revision — ${pr}%`;
+    document.getElementById('leg-b').textContent = `Breaks — ${pb}%`;
+  }
+
+  function updateStats() {
+    const cls = slots.filter(s => s.type==='class');
+    const gaps = slots.filter(s => s.type==='gap');
+    const sm = cls.reduce((a,s)=>a+dur(s.start,s.end),0);
+    const bm = gaps.reduce((a,s)=>a+dur(s.start,s.end),0);
+    document.getElementById('stats').innerHTML =
+      `<div class="stat"><span class="stat-val">${cls.length}</span><span class="stat-label">sessions</span></div>
+       <div class="stat"><span class="stat-val">${fmtDur(sm)}</span><span class="stat-label">study time</span></div>
+       <div class="stat"><span class="stat-val">${fmtDur(bm)}</span><span class="stat-label">break time</span></div>
+       <div class="stat"><span class="stat-val">${slots.length}</span><span class="stat-label">total blocks</span></div>`;
+    updateSubjectTracker();
+    updateSplitBar();
+  }
+
+  function tagClass(tag) {
+    const map = { maths:'t-maths', physics:'t-physics', chem:'t-chem', lr:'t-lr', rev:'t-rev', break:'t-break' };
+    return map[tag] || '';
+  }
+  function rowTagClass(tag) {
+    const map = { maths:'tag-maths', physics:'tag-physics', chem:'tag-chem', lr:'tag-lr', rev:'tag-rev' };
+    return map[tag] || '';
+  }
+
+  function render() {
+    const tbody = document.getElementById('slots');
+    tbody.innerHTML = '';
+    slots.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      const rc = rowTagClass(s.tag);
+      tr.className = (s.type==='gap' ? 'gap-row ' : '') + rc;
+      tr.draggable = true;
+      tr.addEventListener('dragstart', () => { dragSrc=i; tr.classList.add('dragging'); });
+      tr.addEventListener('dragend', () => { tr.classList.remove('dragging'); document.querySelectorAll('#slots tr').forEach(r=>r.classList.remove('drag-over')); });
+      tr.addEventListener('dragover', e => { e.preventDefault(); tr.classList.add('drag-over'); });
+      tr.addEventListener('dragleave', () => tr.classList.remove('drag-over'));
+      tr.addEventListener('drop', e => {
+        e.preventDefault(); tr.classList.remove('drag-over');
+        if (dragSrc===null||dragSrc===i) return;
+        const m = slots.splice(dragSrc,1)[0]; slots.splice(i,0,m); dragSrc=null;
+        scheduleSave(); render();
+      });
+
+      const mkInput = (type, val, placeholder, onChange) => {
+        const inp = document.createElement('input');
+        inp.type=type; inp.value=val||''; inp.placeholder=placeholder||'';
+        inp.addEventListener('input', onChange);
+        return inp;
+      };
+
+      // Handle
+      const tdH = document.createElement('td');
+      tdH.innerHTML = '<span class="handle">⠿</span>';
+
+      // Start
+      const tdS = document.createElement('td');
+      const inpS = mkInput('time', s.start, '', () => { slots[i].start=inpS.value; updateDurCell(i, tdDur); scheduleSave(); updateStats(); });
+      tdS.appendChild(inpS);
+
+      // End
+      const tdE = document.createElement('td');
+      const inpE = mkInput('time', s.end, '', () => { slots[i].end=inpE.value; updateDurCell(i, tdDur); scheduleSave(); updateStats(); });
+      tdE.appendChild(inpE);
+
+      // Duration
+      const tdDur = document.createElement('td');
+      tdDur.innerHTML = `<span class="dur-badge">${fmtDur(dur(s.start,s.end))}</span>`;
+
+      // Subject
+      const tdSubj = document.createElement('td');
+      const inpSubj = mkInput('text', s.subject, s.type==='gap'?'Break label':'Subject', () => { slots[i].subject=inpSubj.value; scheduleSave(); updateStats(); });
+      tdSubj.appendChild(inpSubj);
+
+      // Notes
+      const tdNotes = document.createElement('td');
+      const inpNotes = mkInput('text', s.room||'', 'Notes / method', () => { slots[i].room=inpNotes.value; scheduleSave(); });
+      tdNotes.appendChild(inpNotes);
+
+      // Tag
+      const tdTag = document.createElement('td');
+      const sel = document.createElement('select');
+      sel.className = 'tag-sel ' + tagClass(s.tag);
+      ['maths','physics','chem','lr','rev','break'].forEach(t => {
+        const opt = document.createElement('option');
+        opt.value=t; opt.textContent=t; opt.selected=(s.tag===t);
+        sel.appendChild(opt);
+      });
+      sel.addEventListener('change', () => {
+        slots[i].tag=sel.value;
+        sel.className='tag-sel '+tagClass(sel.value);
+        tr.className=(s.type==='gap'?'gap-row ':'')+rowTagClass(sel.value);
+        scheduleSave(); updateStats();
+      });
+      tdTag.appendChild(sel);
+
+      // Pill
+      const tdPill = document.createElement('td');
+      tdPill.style.textAlign='center';
+      const pill = document.createElement('span');
+      pill.className='type-pill '+(s.type==='class'?'pill-class':'pill-gap');
+      pill.textContent=s.type==='class'?'study':'break';
+      tdPill.appendChild(pill);
+
+      // Delete
+      const tdDel = document.createElement('td');
+      const del = document.createElement('button'); del.className='del-btn'; del.textContent='✕';
+      del.addEventListener('click', () => { slots.splice(i,1); scheduleSave(); render(); });
+      tdDel.appendChild(del);
+
+      tr.append(tdH, tdS, tdE, tdDur, tdSubj, tdNotes, tdTag, tdPill, tdDel);
+      tbody.appendChild(tr);
+    });
+    updateStats();
+  }
+
+  function updateDurCell(i, tdDur) {
+    tdDur.innerHTML = `<span class="dur-badge">${fmtDur(dur(slots[i].start, slots[i].end))}</span>`;
+  }
+
+  function addSlot(type) {
+    const last = slots[slots.length-1];
+    slots.push({ type, subject: type==='gap'?'Break':'New session', start: last?last.end:'08:00', end: last?last.end:'09:00', room:'', tag: type==='gap'?'break':'maths' });
+    scheduleSave(); render();
+    setTimeout(()=>{ const ins=document.querySelectorAll('#slots td:nth-child(5) input'); ins[ins.length-1]?.focus(); ins[ins.length-1]?.select(); },50);
+  }
+
+  let exportOpen = false;
+  function toggleExport() {
+    exportOpen = !exportOpen;
+    const area = document.getElementById('export-area');
+    if (exportOpen) { buildJSON(); area.classList.add('open'); area.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+    else area.classList.remove('open');
+  }
+  function buildJSON() {
+    const lessons = slots.map(s => {
+      const w = calcW(s.start, s.end);
+      if (s.type==='gap') return { type:'gap', desc:s.subject, start_time:s.start, end_time:s.end, width:w };
+      return { type:'class', subject:s.subject, time:`${fmtTime(s.start)} - ${fmtTime(s.end)}`, room:s.room||'', start_time:s.start, end_time:s.end, width:w, is_compact:w<=80, tag:s.tag||'' };
+    });
+    document.getElementById('json-out').value = JSON.stringify({ header:'BITSAT Grind', link:'', lessons }, null, 2);
+  }
+  function copyJSON() {
+    buildJSON();
+    navigator.clipboard.writeText(document.getElementById('json-out').value)
+      .then(()=>showToast('Copied to clipboard'))
+      .catch(()=>showToast('Select all + copy manually'));
+  }
+  function showToast(msg) {
+    const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show');
+    setTimeout(()=>el.classList.remove('show'),2200);
+  }
+
+  load(); render();
+  document.getElementById('save-dot').classList.add('saved');
+  document.getElementById('save-label').textContent = localStorage.getItem(KEY)?'loaded from storage':'defaults loaded';
+</script>
+</body>
 </html>

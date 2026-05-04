@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-curd --discord-presence 
+curd --discord-presence -skip-op

@@ -1,158 +1,199 @@
 {
-  "header": "Grind",
+  "header": "BITSAT Grind",
   "link": "",
   "lessons": [
     {
       "type": "gap",
-      "desc": "Wake Up",
+      "desc": "Wake Up + Review Plan",
       "start_time": "08:00",
       "end_time": "08:30",
       "width": 80
     },
     {
       "type": "class",
-      "subject": "LR Questions",
-      "time": "8:30 AM - 9:45 AM",
-      "room": "Quizzer",
+      "subject": "Maths — Questions",
+      "time": "8:30 AM - 10:00 AM",
+      "room": "PYQ + BITSAT mock sets",
       "start_time": "08:30",
-      "end_time": "09:45",
-      "width": 120,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Break Fast + Shower",
-      "start_time": "09:30",
       "end_time": "10:00",
-      "width": 80
-    },
-    {
-      "type": "class",
-      "subject": "Physics Questions",
-      "time": "10:00 AM - 12:00 PM",
-      "room": "",
-      "start_time": "10:00",
-      "end_time": "12:00",
-      "width": 140,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Maths Questions",
-      "time": "12:00 PM - 1:30 PM",
-      "room": "",
-      "start_time": "12:00",
-      "end_time": "13:30",
       "width": 120,
-      "is_compact": false
+      "is_compact": false,
+      "tag": "maths"
+    },
+    {
+      "type": "class",
+      "subject": "Chemistry Theory — Slot A",
+      "time": "10:00 AM - 11:30 AM",
+      "room": "Physical / Inorganic / Organic (rotate)",
+      "start_time": "10:00",
+      "end_time": "11:30",
+      "width": 120,
+      "is_compact": false,
+      "tag": "chem"
+    },
+    {
+      "type": "class",
+      "subject": "Chemistry — Questions",
+      "time": "11:30 AM - 12:30 PM",
+      "room": "Slot A topic (same as theory above)",
+      "start_time": "11:30",
+      "end_time": "12:30",
+      "width": 100,
+      "is_compact": false,
+      "tag": "chem"
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Theory",
+      "time": "12:30 PM - 1:00 PM",
+      "room": "BITSAT-only topics + concept gaps",
+      "start_time": "12:30",
+      "end_time": "13:00",
+      "width": 80,
+      "is_compact": true,
+      "tag": "maths"
     },
     {
       "type": "gap",
       "desc": "Lunch",
+      "start_time": "13:00",
+      "end_time": "13:30",
+      "width": 80
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Theory continued",
+      "time": "1:30 PM - 2:30 PM",
+      "room": "BITSAT-only topics",
       "start_time": "13:30",
       "end_time": "14:30",
-      "width": 100
-    },
-    {
-      "type": "class",
-      "subject": "Chem Questions",
-      "time": "2:30 PM - 4:30 PM",
-      "room": "",
-      "start_time": "14:30",
-      "end_time": "16:30",
-      "width": 140,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Theory ",
-      "time": "4:30 PM - 5:30 PM",
-      "room": "",
-      "start_time": "16:30",
-      "end_time": "17:30",
       "width": 100,
-      "is_compact": false
+      "is_compact": false,
+      "tag": "maths"
+    },
+    {
+      "type": "class",
+      "subject": "Physics — Theory",
+      "time": "2:30 PM - 4:00 PM",
+      "room": "BITSAT-only topics",
+      "start_time": "14:30",
+      "end_time": "16:00",
+      "width": 120,
+      "is_compact": false,
+      "tag": "physics"
+    },
+    {
+      "type": "class",
+      "subject": "Chemistry Theory — Slot B",
+      "time": "4:00 PM - 5:30 PM",
+      "room": "Second branch of the day (rotate)",
+      "start_time": "16:00",
+      "end_time": "17:30",
+      "width": 120,
+      "is_compact": false,
+      "tag": "chem"
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Speed Drills",
+      "time": "5:30 PM - 6:00 PM",
+      "room": "Accuracy + timed MCQ sets",
+      "start_time": "17:30",
+      "end_time": "18:00",
+      "width": 80,
+      "is_compact": true,
+      "tag": "maths"
     },
     {
       "type": "gap",
-      "desc": "Break",
-      "start_time": "17:30",
+      "desc": "Evening Break",
+      "start_time": "18:00",
       "end_time": "18:30",
-      "width": 100
+      "width": 80
     },
     {
       "type": "class",
-      "subject": "Theory",
-      "time": "6:30 PM - 7:30 PM",
-      "room": "",
+      "subject": "LR — English + Reasoning",
+      "time": "6:30 PM - 8:00 PM",
+      "room": "BITSAT-specific patterns",
       "start_time": "18:30",
-      "end_time": "19:30",
-      "width": 100,
-      "is_compact": false
+      "end_time": "20:00",
+      "width": 120,
+      "is_compact": false,
+      "tag": "lr"
     },
     {
       "type": "gap",
       "desc": "Dinner",
-      "start_time": "19:30",
+      "start_time": "20:00",
       "end_time": "20:30",
-      "width": 100
+      "width": 80
     },
     {
       "type": "class",
-      "subject": "Theory",
-      "time": "8:30 PM - 9:45 PM",
-      "room": "",
+      "subject": "Physics — Questions",
+      "time": "8:30 PM - 10:00 PM",
+      "room": "Chapter-wise + accuracy sets",
       "start_time": "20:30",
-      "end_time": "21:45",
+      "end_time": "22:00",
       "width": 120,
-      "is_compact": false
+      "is_compact": false,
+      "tag": "physics"
     },
     {
       "type": "class",
-      "subject": "Maths Questions",
-      "time": "9:45 PM - 10:45 PM",
-      "room": "",
-      "start_time": "21:45",
-      "end_time": "22:45",
+      "subject": "Chemistry — Questions",
+      "time": "10:00 PM - 11:00 PM",
+      "room": "Slot B topic (same as evening theory)",
+      "start_time": "22:00",
+      "end_time": "23:00",
       "width": 100,
-      "is_compact": false
+      "is_compact": false,
+      "tag": "chem"
     },
     {
       "type": "class",
-      "subject": "PCM/LR Questions ",
-      "time": "10:45 PM - 11:45 PM",
-      "room": "",
-      "start_time": "22:45",
-      "end_time": "23:45",
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "gap",
-      "desc": "Break",
-      "start_time": "23:45",
-      "end_time": "00:00",
-      "width": 60
+      "subject": "Maths — Hard Problems",
+      "time": "11:00 PM - 12:30 AM",
+      "room": "Mock section + integer type",
+      "start_time": "23:00",
+      "end_time": "00:30",
+      "width": 120,
+      "is_compact": false,
+      "tag": "maths"
     },
     {
       "type": "class",
-      "subject": "Physic Questions ",
-      "time": "12:00 AM - 1:00 AM",
-      "room": "",
-      "start_time": "00:00",
-      "end_time": "01:00",
-      "width": 100,
-      "is_compact": false
-    },
-    {
-      "type": "class",
-      "subject": "Planning next day",
-      "time": "1:00 AM - 1:15 AM",
-      "room": "",
-      "start_time": "01:00",
+      "subject": "Physics — Theory",
+      "time": "12:30 AM - 1:30 AM",
+      "room": "Concept consolidation",
+      "start_time": "00:30",
       "end_time": "01:30",
       "width": 100,
-      "is_compact": false
+      "is_compact": false,
+      "tag": "physics"
+    },
+    {
+      "type": "class",
+      "subject": "Revision — Error Review",
+      "time": "1:30 AM - 2:00 AM",
+      "room": "Today's mistakes across all subjects",
+      "start_time": "01:30",
+      "end_time": "02:00",
+      "width": 80,
+      "is_compact": true,
+      "tag": "rev"
+    },
+    {
+      "type": "class",
+      "subject": "Planning Next Day",
+      "time": "2:00 AM - 2:30 AM",
+      "room": "Log errors, set tomorrow's topic slots",
+      "start_time": "02:00",
+      "end_time": "02:30",
+      "width": 80,
+      "is_compact": true,
+      "tag": "rev"
     }
   ]
 }
