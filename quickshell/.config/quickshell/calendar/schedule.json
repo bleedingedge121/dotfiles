@@ -94,22 +94,22 @@
       "tag": "chem"
     },
     {
-      "type": "class",
-      "subject": "Maths — Speed Drills",
-      "time": "5:30 PM - 6:00 PM",
-      "room": "Accuracy + timed MCQ sets",
+      "type": "gap",
+      "desc": "Evening Break",
       "start_time": "17:30",
       "end_time": "18:00",
+      "width": 80
+    },
+    {
+      "type": "class",
+      "subject": "Maths — Speed Drills",
+      "time": "6:00 PM - 6:30 PM",
+      "room": "Accuracy + timed MCQ sets",
+      "start_time": "18:00",
+      "end_time": "18:30",
       "width": 80,
       "is_compact": true,
       "tag": "maths"
-    },
-    {
-      "type": "gap",
-      "desc": "Evening Break",
-      "start_time": "18:00",
-      "end_time": "18:30",
-      "width": 80
     },
     {
       "type": "class",
