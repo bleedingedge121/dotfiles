@@ -1,7 +1,7 @@
 {
   "header": "BITSAT Grind",
   "link": "",
-  "lessons": [
+  "les
     {
       "type": "gap",
       "desc": "Wake Up + Review Plan",
@@ -10,12 +10,19 @@
       "width": 80
     },
     {
+      "type": "gap",
+      "desc": "Breakfast ",
+      "start_time": "08:30",
+      "end_time": "09:00",
+      "width": 80
+    },
+    {
       "type": "class",
       "subject": "Maths — Questions",
-      "time": "8:30 AM - 10:00 AM",
+      "time": "9:00 AM - 10:30 AM",
       "room": "PYQ + BITSAT mock sets",
-      "start_time": "08:30",
-      "end_time": "10:00",
+      "start_time": "09:00",
+      "end_time": "10:30",
       "width": 120,
       "is_compact": false,
       "tag": "maths"
@@ -23,11 +30,11 @@
     {
       "type": "class",
       "subject": "Chemistry Theory — Slot A",
-      "time": "10:00 AM - 11:30 AM",
+      "time": "10:30 AM - 11:30 AM",
       "room": "Physical / Inorganic / Organic (rotate)",
-      "start_time": "10:00",
+      "start_time": "10:30",
       "end_time": "11:30",
-      "width": 120,
+      "width": 100,
       "is_compact": false,
       "tag": "chem"
     },
@@ -49,8 +56,8 @@
       "room": "BITSAT-only topics + concept gaps",
       "start_time": "12:30",
       "end_time": "13:00",
-      "width": 80,
-      "is_compact": true,
+      "width": 100,
+      "is_compact": false,
       "tag": "maths"
     },
     {
@@ -102,41 +109,40 @@
     },
     {
       "type": "class",
+      "subject": "LR — English + Reasoning",
+      "time": "6:30 PM - 7:30 PM",
+      "room": "BITSAT-specific patterns",
+      "start_time": "18:30",
+      "end_time": "19:30",
+      "width": 100,
+      "is_compact": false,
+      "tag": "lr"
+    },
+    {
+      "type": "class",
       "subject": "Maths — Speed Drills",
       "time": "6:00 PM - 6:30 PM",
       "room": "Accuracy + timed MCQ sets",
       "start_time": "18:00",
       "end_time": "18:30",
-      "width": 80,
-      "is_compact": true,
+      "width": 100,
       "tag": "maths"
-    },
-    {
-      "type": "class",
-      "subject": "LR — English + Reasoning",
-      "time": "6:30 PM - 8:00 PM",
-      "room": "BITSAT-specific patterns",
-      "start_time": "18:30",
-      "end_time": "20:00",
-      "width": 120,
-      "is_compact": false,
-      "tag": "lr"
     },
     {
       "type": "gap",
       "desc": "Dinner",
-      "start_time": "20:00",
-      "end_time": "20:30",
+      "start_time": "19:30",
+      "end_time": "20:00",
       "width": 80
     },
     {
       "type": "class",
       "subject": "Physics — Questions",
-      "time": "8:30 PM - 10:00 PM",
+      "time": "8:00 PM - 10:00 PM",
       "room": "Chapter-wise + accuracy sets",
-      "start_time": "20:30",
+      "start_time": "20:00",
       "end_time": "22:00",
-      "width": 120,
+      "width": 140,
       "is_compact": false,
       "tag": "physics"
     },
@@ -180,8 +186,8 @@
       "room": "Today's mistakes across all subjects",
       "start_time": "01:30",
       "end_time": "02:00",
-      "width": 80,
-      "is_compact": true,
+      "width": 120,
+      "is_compact": false,
       "tag": "rev"
     },
     {
@@ -191,8 +197,8 @@
       "room": "Log errors, set tomorrow's topic slots",
       "start_time": "02:00",
       "end_time": "02:30",
-      "width": 80,
-      "is_compact": true,
+      "width": 120,
+      "is_compact": false,
       "tag": "rev"
     }
   ]
