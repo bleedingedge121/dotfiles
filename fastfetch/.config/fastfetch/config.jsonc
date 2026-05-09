@@ -1,15 +1,25 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
-
+  // "logo": {
+  //   "type": "builtin",
+  //   "source":"blackarch",
+  //   "padding": {
+  //     "top": 0,
+  //     "right": 3
+  //   }
+  // },
   "logo": {
-    "type": "builtin",
-    "source":"blackarch",
+    "source": "/home/nexus/dotfiles/fastfetch/.config/fastfetch/logo2.txt",
+    "type": "auto",
+    "height": 5,
+    "color": {
+      "1": "white"
+    },
     "padding": {
-      "top": 1,
-      "right": 3
+      "top": 5,
+      "left": 2
     }
   },
-
   "display": {
     "separator": " → ",
     "brightColor": true,
@@ -34,7 +44,10 @@
       }
     },
     "percent": {
-      "type": ["num-color", "bar"],
+      "type": [
+        "num-color",
+        "bar"
+      ],
       "ndigits": 1,
       "color": {
         "green": "32",
@@ -47,7 +60,6 @@
       "ndigits": 2
     }
   },
-
   "modules": [
     {
       "type": "title",
@@ -62,7 +74,6 @@
       "type": "separator",
       "string": "─"
     },
-
     {
       "type": "custom",
       "format": "┌─ SYSTEM ───────────────────────────────────────┐"
@@ -101,7 +112,6 @@
       "type": "custom",
       "format": "└────────────────────────────────────────────────┘"
     },
-
     {
       "type": "custom",
       "format": "┌─ DESKTOP ──────────────────────────────────────┐"
@@ -157,7 +167,6 @@
       "type": "custom",
       "format": "└────────────────────────────────────────────────┘"
     },
-
     {
       "type": "custom",
       "format": "┌─ HARDWARE ─────────────────────────────────────┐"
@@ -193,7 +202,6 @@
       "type": "custom",
       "format": "└────────────────────────────────────────────────┘"
     },
-
     {
       "type": "custom",
       "format": "┌─ MEMORY ───────────────────────────────────────┐"
@@ -222,7 +230,6 @@
       "type": "custom",
       "format": "└────────────────────────────────────────────────┘"
     },
-
     // {
     //   "type": "custom",
     //   "format": "┌─ STORAGE ──────────────────────────────────────┐"
@@ -247,7 +254,6 @@
     //   "type": "custom",
     //   "format": "└────────────────────────────────────────────────┘"
     // },
-
     {
       "type": "custom",
       "format": "┌────────────────────────────────────────────────┐"
@@ -271,7 +277,6 @@
       "type": "custom",
       "format": "└────────────────────────────────────────────────┘"
     },
-
     // {
     //   "type": "custom",
     //   "format": "┌─ RUNTIME ──────────────────────────────────────┐"
@@ -306,11 +311,10 @@
     //   "type": "custom",
     //   "format": "└────────────────────────────────────────────────┘"
     // },
-
     {
       "type": "colors",
       "symbol": "circle",
-      "width":"10",
+      "width": "10",
       "paddingLeft": 0
     }
   ]
