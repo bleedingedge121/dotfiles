@@ -1,29 +1,50 @@
 return {
-  -- Install Catppuccin with your settings
+
+  {
+  "folke/snacks.nvim",
+  opts = {
+    dashboard = {
+      preset = {
+        header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+        ]],
+      },
+    },
+  },
+},
+
+  -- Catppuccin
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    priority = 1000,
     opts = {
       flavour = "mocha",
       transparent_background = false,
       term_colors = false,
-      -- Add your other catppuccin options here
     },
   },
 
-  -- Install Gruvbox
+  -- Gruvbox
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
-    config = true,
+    opts = {
+      contrast = "hard",
+      transparent_mode = false,
+    },
   },
 
-  
-  -- Set the active theme
+  -- Active colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin", -- Change this to "gruvbox" to swap
+      colorscheme = "gruvbox", -- Change this to to swap colorscheme
     },
   },
 }

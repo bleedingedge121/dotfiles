@@ -1,25 +1,25 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
-  // "logo": {
-  //   "type": "builtin",
-  //   "source":"blackarch",
-  //   "padding": {
-  //     "top": 0,
-  //     "right": 3
-  //   }
-  // },
   "logo": {
-    "source": "/home/nexus/dotfiles/fastfetch/.config/fastfetch/logo2.txt",
-    "type": "auto",
-    "height": 5,
-    "color": {
-      "1": "white"
-    },
+    "type": "builtin",
+    "source": "blackarch",
     "padding": {
-      "top": 5,
-      "left": 2
+      "top": 0,
+      "right": 3
     }
   },
+  // "logo": {
+  //   "source": "~/.config/fastfetch/logo.txt",
+  //   "type": "auto",
+  //   "height": 5,
+  //   "color": {
+  //     "1": "red"
+  //   },
+  //   "padding": {
+  //     "top": 0,
+  //     "left": 2
+  //   }
+  // },
   "display": {
     "separator": " → ",
     "brightColor": true,

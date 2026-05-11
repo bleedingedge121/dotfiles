@@ -91,7 +91,7 @@
       "workspaceZoom": 1.05
     },
     "thumbnailPath": "/home/nexus/.config/hypr/custom/scripts/mpvpaper_thumbnails/cerulean-coast-elden-ring-moewalls-com.mp4.jpg",
-    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/wallpaperflar42.jpg",
+    "wallpaperPath": "/home/nexus/Pictures/Wallpapers/lofi_cat.png",
     "widgets": {
       "clock": {
         "cookie": {
@@ -128,10 +128,10 @@
           "text": "Awareness of Ignorance\nIs Beginning Of Wisdom"
         },
         "showOnlyWhenLocked": false,
-        "style": "digital",
+        "style": "cookie",
         "styleLocked": "cookie",
-        "x": 260,
-        "y": 353
+        "x": 207.88740808823542,
+        "y": 212.44439338235293
       },
       "weather": {
         "enable": false,
