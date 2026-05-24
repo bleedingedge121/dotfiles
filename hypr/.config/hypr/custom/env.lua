@@ -1,0 +1,2 @@
+hl.env("QT_SCALE_FACTOR", "1.02")
+hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "0")
